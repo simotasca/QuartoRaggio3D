@@ -20,7 +20,10 @@ const Gltf = ({ url, castShadow, position }) => {
 
   return (
     <group position={position} dispose={null}>
-      {model ? (<primitive name="Object_0" object={model} />) : (null)}
+      {model ? (<primitive name="Object_0" object={model} />) : (<mesh position={[0, 20, 0]}>
+        <boxGeometry args={[10, 10, 10]} />
+        <meshStandardMaterial color='orange' />
+      </mesh>)}
     </group>
   );
 }
