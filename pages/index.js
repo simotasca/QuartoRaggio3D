@@ -11,7 +11,7 @@ const HomePage = () => {
   return (
     <CenterSection>
       <h1 className="display-5" style={{ color: "rgb(30, 29, 60)", fontWeight: "bold" }}>
-        Uomini di Buona Volontà cooperano per l`&apos;`Unità
+        Uomini di Buona Volontà cooperano per l&apos;Unità
         <span className="d-lg-none">.</span>
         <span className="d-none d-lg-inline"> comunitaria, nazionale e internazionale:</span>
         <br />

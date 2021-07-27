@@ -39,7 +39,7 @@ function HtmlContent({ children }) {
     },
     panel: {
       entering: {
-        width: "0%"
+        width: "0%",
       },
       entered: {
         width: "100%",
@@ -60,7 +60,9 @@ function HtmlContent({ children }) {
   useEffect(() => {
     if (displayedChildren == null) {
       setDisplayedChildren(children);
-    } else if(displayedChildren.type.name !== children.type.name){
+      // la key è settata in app ed è il route corrispondente
+      // se il route non cambia non si ha l'animazione
+    } else if (displayedChildren.key !== children.key) {
       setInProp(false);
     }
   }, [children]);
