@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { LoadingManager } from "three";
 import { DRACOLoader, GLTFLoader } from "three-stdlib";
 //import { BufferGeometryUtils } from "three";
 //import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
@@ -7,9 +8,12 @@ const Gltf = ({ url, castShadow, position }) => {
   const [model, setModel] = useState(null);
 
   useEffect(() => {
-    // const { GLTFLoader } = require("three/examples/jsm/loaders/GLTFLoader");
-    const loader = new GLTFLoader().setDRACOLoader(
-      new DRACOLoader().setDecoderPath('https://www.gstatic.com/draco/v1/decoders/')
+    const manager = new LoadingManager();
+
+    const loader = new GLTFLoader(manager).setDRACOLoader(
+      new DRACOLoader(manager).setDecoderPath(
+        "https://www.gstatic.com/draco/v1/decoders/"
+      )
     );
 
     loader.load(
