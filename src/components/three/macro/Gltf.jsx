@@ -14,7 +14,7 @@ const Gltf = ({ url, castShadow, position }) => {
       url,
       // called when the resource is loaded
       async (gltf) => {
-        console.log(gltf.scene.children.length);
+        // console.log(gltf.scene.children.length);
         /*SHADOW
         if (castShadow)
           scene.traverse((node) => {
