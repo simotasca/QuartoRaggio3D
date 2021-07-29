@@ -5,7 +5,7 @@ import { /*DRACOLoader,*/ GLTFLoader } from "three-stdlib";
 const Gltf = ({ url, position }) => {
   const [model, setModel] = useState(null);
 
-  const load = async () => {
+  useEffect(() => {
     const manager = new LoadingManager();
     const loader = new GLTFLoader(manager);
     // .setDRACOLoader(
@@ -14,10 +14,6 @@ const Gltf = ({ url, position }) => {
     //   )
     // );
     loader.load(url, async (gltf) => setModel(gltf.scene));
-  };
-
-  useEffect(() => {
-    load(); //async hopefully
   }, [url]);
 
   return (
