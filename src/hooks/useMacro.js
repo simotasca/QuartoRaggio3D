@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react"
-import { macros } from "../store/macroContext"
+import { macros } from "../helpers/macros";
 
 export const useMacro = () => {
   const [macro, setMacro] = useState(macros.home);

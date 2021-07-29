@@ -1,107 +1,107 @@
-//#region MACROS
-export const MACRO_HOME = 0;
-export const MACRO_COOPERATIVA = 1;
-export const MACRO_INTEGRAZIONE = 2;
-export const MACRO_AFRICA = 3;
-export const MACRO_INCLUSIONE = 4;
-export const MACRO_COMUNITA = 5;
-//#endregion
+export const macros = {
+  home: 0,
+  cooperativa: 1,
+  integrazione: 2,
+  africa: 3,
+  inclusione: 4,
+  comunita: 5
+}
 
 //#region MACRO POSITIONS
-const MACRO_POSITIONS = new Array(6);
-MACRO_POSITIONS[MACRO_HOME] = [50, 0, 190];
-MACRO_POSITIONS[MACRO_COOPERATIVA] = [-150, 0, 50];
-MACRO_POSITIONS[MACRO_INTEGRAZIONE] = [180, 0, 40];
-MACRO_POSITIONS[MACRO_AFRICA] = [150, 0, -130];
-MACRO_POSITIONS[MACRO_INCLUSIONE] = [-100, 0, -170];
-MACRO_POSITIONS[MACRO_COMUNITA] = [56, 0, -292];
-export { MACRO_POSITIONS };
+const macroPositions = new Array(6);
+macroPositions[macros.home] = [50, 0, 190];
+macroPositions[macros.cooperativa] = [-150, 0, 50];
+macroPositions[macros.integrazione] = [180, 0, 40];
+macroPositions[macros.africa] = [150, 0, -130];
+macroPositions[macros.inclusione] = [-100, 0, -170];
+macroPositions[macros.comunita] = [0, 0, 0];
+export { macroPositions };
 //#endregion
 
 //#region CAM TARGETS
-const CAM_TARGETS = new Array(6);
-CAM_TARGETS[MACRO_HOME] = [40, 20, 190];
-CAM_TARGETS[MACRO_COOPERATIVA] = [-150, 22, 50];
-CAM_TARGETS[MACRO_INTEGRAZIONE] = [180, 15, 40];
-CAM_TARGETS[MACRO_AFRICA] = [150, 8, -130];
-CAM_TARGETS[MACRO_INCLUSIONE] = [-100, 14, -170];
-CAM_TARGETS[MACRO_COMUNITA] = [0, 0, -1];
-export { CAM_TARGETS };
+const camTargets = new Array(6);
+camTargets[macros.home] = [40, 20, 190];
+camTargets[macros.cooperativa] = [-150, 22, 50];
+camTargets[macros.integrazione] = [180, 15, 40];
+camTargets[macros.africa] = [150, 8, -130];
+camTargets[macros.inclusione] = [-100, 14, -170];
+camTargets[macros.comunita] = [0, 0, -1];
+export { camTargets };
 //#endregion
 
 //#region CAM MINOR TARGETS
-const CAM_MINOR_TARGETS = new Array(6);
-CAM_MINOR_TARGETS[MACRO_HOME] = [50, 20, 190];
-CAM_MINOR_TARGETS[MACRO_COOPERATIVA] = [-150, 22, 50];
-CAM_MINOR_TARGETS[MACRO_INTEGRAZIONE] = [180, 15, 40];
-CAM_MINOR_TARGETS[MACRO_AFRICA] = [150, 8, -130];
-CAM_MINOR_TARGETS[MACRO_INCLUSIONE] = [-100, 14, -170];
-CAM_MINOR_TARGETS[MACRO_COMUNITA] = [0, 0, -1];
-export { CAM_MINOR_TARGETS };
+const camMinorTargets = new Array(6);
+camMinorTargets[macros.home] = [50, 20, 190];
+camMinorTargets[macros.cooperativa] = [-150, 22, 50];
+camMinorTargets[macros.integrazione] = [180, 15, 40];
+camMinorTargets[macros.africa] = [150, 8, -130];
+camMinorTargets[macros.inclusione] = [-100, 14, -170];
+camMinorTargets[macros.comunita] = [0, 0, -1];
+export { camMinorTargets };
 //#endregion
 
 //#region CAM SIDE TARGETS
-const CAM_SIDE_TARGETS = new Array(6);
-CAM_SIDE_TARGETS[MACRO_HOME] = [31, 24, 190];
-CAM_SIDE_TARGETS[MACRO_COOPERATIVA] = [-210, 15, 20];
-CAM_SIDE_TARGETS[MACRO_INTEGRAZIONE] = [155, 12, 40];
-CAM_SIDE_TARGETS[MACRO_AFRICA] = [95, 17, -130];
-CAM_SIDE_TARGETS[MACRO_INCLUSIONE] = [-125, 13, -170];
-CAM_SIDE_TARGETS[MACRO_COMUNITA] = [-150, 0, -1];
-export { CAM_SIDE_TARGETS };
+const camSideTargets = new Array(6);
+camSideTargets[macros.home] = [31, 24, 190];
+camSideTargets[macros.cooperativa] = [-210, 15, 20];
+camSideTargets[macros.integrazione] = [155, 12, 40];
+camSideTargets[macros.africa] = [95, 17, -130];
+camSideTargets[macros.inclusione] = [-125, 13, -170];
+camSideTargets[macros.comunita] = [-150, 0, -1];
+export { camSideTargets };
 //#endregion
 
 //#region CAM MINOR SIDE TARGETS
-const CAM_MINOR_SIDE_TARGETS = new Array(6);
-CAM_MINOR_SIDE_TARGETS[MACRO_HOME] = [36, 25, 200];
-CAM_MINOR_SIDE_TARGETS[MACRO_COOPERATIVA] = [-185, 17, 20];
-CAM_MINOR_SIDE_TARGETS[MACRO_INTEGRAZIONE] = [167, 15, 40];
-CAM_MINOR_SIDE_TARGETS[MACRO_AFRICA] = [115, 17, -130];
-CAM_MINOR_SIDE_TARGETS[MACRO_INCLUSIONE] = [-120, 14, -170];
-CAM_MINOR_SIDE_TARGETS[MACRO_COMUNITA] = [-105, 0, -11];
-export { CAM_MINOR_SIDE_TARGETS };
+const camMinorSideTargets = new Array(6);
+camMinorSideTargets[macros.home] = [36, 25, 200];
+camMinorSideTargets[macros.cooperativa] = [-185, 17, 20];
+camMinorSideTargets[macros.integrazione] = [167, 15, 40];
+camMinorSideTargets[macros.africa] = [115, 17, -130];
+camMinorSideTargets[macros.inclusione] = [-120, 14, -170];
+camMinorSideTargets[macros.comunita] = [-105, 0, -11];
+export { camMinorSideTargets };
 //#endregion
 
 //#region CAM POSITIONS
-const CAM_POSITIONS = new Array(6);
-CAM_POSITIONS[MACRO_HOME] = [50, 15, 250];
-CAM_POSITIONS[MACRO_COOPERATIVA] = [-200, 10, 120];
-CAM_POSITIONS[MACRO_INTEGRAZIONE] = [150, 20, 80];
-CAM_POSITIONS[MACRO_AFRICA] = [145, 22, -25];
-CAM_POSITIONS[MACRO_INCLUSIONE] = [-150, 10, -140];
-CAM_POSITIONS[MACRO_COMUNITA] = [0, 300, 0];
-export { CAM_POSITIONS };
+const camPositions = new Array(6);
+camPositions[macros.home] = [50, 15, 250];
+camPositions[macros.cooperativa] = [-200, 10, 120];
+camPositions[macros.integrazione] = [150, 20, 80];
+camPositions[macros.africa] = [145, 22, -25];
+camPositions[macros.inclusione] = [-150, 10, -140];
+camPositions[macros.comunita] = [0, 300, 0];
+export { camPositions };
 //#endregion
 
 //#region CAM MINOR POSITIONS
-const CAM_MINOR_POSITIONS = new Array(6);
-CAM_MINOR_POSITIONS[MACRO_HOME] = [50, 15, 250];
-CAM_MINOR_POSITIONS[MACRO_COOPERATIVA] = [-200, 10, 120];
-CAM_MINOR_POSITIONS[MACRO_INTEGRAZIONE] = [150, 20, 80];
-CAM_MINOR_POSITIONS[MACRO_AFRICA] = [145, 22, -25];
-CAM_MINOR_POSITIONS[MACRO_INCLUSIONE] = [-150, 10, -140];
-CAM_MINOR_POSITIONS[MACRO_COMUNITA] = [0, 300, 0];
-export { CAM_MINOR_POSITIONS };
+const camMinorPositions = new Array(6);
+camMinorPositions[macros.home] = [50, 15, 250];
+camMinorPositions[macros.cooperativa] = [-200, 10, 120];
+camMinorPositions[macros.integrazione] = [150, 20, 80];
+camMinorPositions[macros.africa] = [145, 22, -25];
+camMinorPositions[macros.inclusione] = [-150, 10, -140];
+camMinorPositions[macros.comunita] = [0, 300, 0];
+export { camMinorPositions };
 //#endregion
 
 //#region CAM SIDE POSITIONS
-const CAM_SIDE_POSITIONS = new Array(6);
-CAM_SIDE_POSITIONS[MACRO_HOME] = [41, 20, 233];
-CAM_SIDE_POSITIONS[MACRO_COOPERATIVA] = [-170, 40, 160];
-CAM_SIDE_POSITIONS[MACRO_INTEGRAZIONE] = [160, 20, 93];
-CAM_SIDE_POSITIONS[MACRO_AFRICA] = [150, 20, 5];
-CAM_SIDE_POSITIONS[MACRO_INCLUSIONE] = [-140, 10, -150];
-CAM_SIDE_POSITIONS[MACRO_COMUNITA] = [-150, 300, 0];
-export { CAM_SIDE_POSITIONS };
+const camSidePositions = new Array(6);
+camSidePositions[macros.home] = [41, 20, 233];
+camSidePositions[macros.cooperativa] = [-170, 40, 160];
+camSidePositions[macros.integrazione] = [160, 20, 93];
+camSidePositions[macros.africa] = [150, 20, 5];
+camSidePositions[macros.inclusione] = [-140, 10, -150];
+camSidePositions[macros.comunita] = [-150, 300, 0];
+export { camSidePositions };
 //#endregion
 
 //#region CAM MINOR SIDE POSITIONS
-const CAM_MINOR_SIDE_POSITIONS = new Array(6);
-CAM_MINOR_SIDE_POSITIONS[MACRO_HOME] = [40, 25, 240];
-CAM_MINOR_SIDE_POSITIONS[MACRO_COOPERATIVA] = [-145, 35, 140];
-CAM_MINOR_SIDE_POSITIONS[MACRO_INTEGRAZIONE] = [160, 20, 80];
-CAM_MINOR_SIDE_POSITIONS[MACRO_AFRICA] = [185, 28, -20];
-CAM_MINOR_SIDE_POSITIONS[MACRO_INCLUSIONE] = [-140, 10, -150];
-CAM_MINOR_SIDE_POSITIONS[MACRO_COMUNITA] = [-105, 350, -10];
-export { CAM_MINOR_SIDE_POSITIONS };
+const camMinorSidePositions = new Array(6);
+camMinorSidePositions[macros.home] = [40, 25, 240];
+camMinorSidePositions[macros.cooperativa] = [-145, 35, 140];
+camMinorSidePositions[macros.integrazione] = [160, 20, 80];
+camMinorSidePositions[macros.africa] = [185, 28, -20];
+camMinorSidePositions[macros.inclusione] = [-140, 10, -150];
+camMinorSidePositions[macros.comunita] = [-105, 350, -10];
+export { camMinorSidePositions };
 //#endregion

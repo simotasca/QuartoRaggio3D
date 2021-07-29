@@ -2,7 +2,8 @@ import { useContext, useEffect, useMemo } from "react";
 import Button from "../components/buttons/Button";
 import CenterSection from "../components/CenterSection";
 import MyLink from "../components/MyLink";
-import { MacroContext, macros } from "../store/macroContext";
+import { macros } from "../helpers/macros";
+import { MacroContext } from "../store/macroContext";
 
 const HomePage = () => {
   const { setCurrentMacro } = useContext(MacroContext);

@@ -1,6 +1,7 @@
-import { useContext, useEffect, useMemo } from "react";
+import { useContext, useEffect } from "react";
 import MailForm from "../components/MailForm";
-import { MacroContext, macros } from "../store/macroContext";
+import { macros } from "../helpers/macros";
+import { MacroContext, } from "../store/macroContext";
 
 const AboutPage = () => {
   const { setCurrentMacro } = useContext(MacroContext);

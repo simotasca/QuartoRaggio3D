@@ -1,5 +1,6 @@
 import { useContext, useEffect, useMemo } from "react";
-import { MacroContext, macros } from "../store/macroContext";
+import { macros } from "../helpers/macros";
+import { MacroContext } from "../store/macroContext";
 
 const InclusionePage = () => {
   const { setCurrentMacro } = useContext(MacroContext);

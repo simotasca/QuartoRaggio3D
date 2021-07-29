@@ -1,7 +1,8 @@
 import { useContext, useEffect } from "react";
 import Button2 from "../components/buttons/Button2";
 import CenterSection from "../components/CenterSection";
-import { MacroContext, macros } from "../store/macroContext";
+import { macros } from "../helpers/macros";
+import { MacroContext } from "../store/macroContext";
 
 const AfricaPage = () => {
   const { setCurrentMacro } = useContext(MacroContext);
