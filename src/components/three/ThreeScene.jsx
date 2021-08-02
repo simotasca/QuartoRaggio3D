@@ -1,7 +1,14 @@
 import React, { useContext, useEffect } from "react";
 import { Canvas } from "@react-three/fiber";
 import { CameraManager, Box, Lights } from ".";
-import { Africa, Cooperativa, Home, Inclusione, Integrazione } from "./macro";
+import {
+  Africa,
+  Cooperativa,
+  Home,
+  Inclusione,
+  Integrazione,
+  Obj,
+} from "./macro";
 import { MacroContext } from "../../store/macroContext";
 import { macroPositions, macros } from "../../helpers/macros";
 

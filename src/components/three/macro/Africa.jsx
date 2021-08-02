@@ -3,7 +3,7 @@ import Fire from "../Fire";
 
 const Africa = (props) => (
   <group position={props.position}>
-    <Gltf url={"/models/AFRICA.gltf"} />
+    <Gltf url={"/models/DracoAFRICA.gltf"} />
     <Fire position={[23, 24, 36]} />
   </group>
 );
