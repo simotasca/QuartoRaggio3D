@@ -2,6 +2,13 @@ import { useEffect, useState } from "react";
 import { LoadingManager } from "three";
 import { DRACOLoader, GLTFLoader } from "three-stdlib";
 
+const Placeholder = () => (
+  <mesh position={[0, 20, 0]}>
+    <boxGeometry args={[10, 10, 10]} />
+    <meshStandardMaterial color="orange" />
+  </mesh>
+);
+
 const Gltf = ({ url, position }) => {
   const [model, setModel] = useState(null);
 
@@ -16,15 +23,8 @@ const Gltf = ({ url, position }) => {
   }, [url]);
 
   return (
-    <group position={position} dispose={null}>
-      {model ? (
-        <primitive name="model" object={model} />
-      ) : (
-        <mesh position={[0, 20, 0]}>
-          <boxGeometry args={[10, 10, 10]} />
-          <meshStandardMaterial color="orange" />
-        </mesh>
-      )}
+    <group position={position} /*dispose={null}*/>
+      {model ? <primitive name="model" object={model} /> : <Placeholder />}
     </group>
   );
 };

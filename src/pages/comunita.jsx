@@ -14,10 +14,10 @@ const AboutPage = () => {
           Unisciti alla <span className="warning">Comunità</span>
         </h1>
         <p className="secondary">
-          E`&apos;` una comunità aperta a tutti: Se avete scelto di far parte di questa
+          E&apos; una comunità aperta a tutti: Se avete scelto di far parte di questa
           comunità collaborerete nel lavoro di gruppo. Aiutaci a realizzare
           progetti di solidarietà sociale, unendoti alla nostra community,
-          oppure proponici nuove iniziative.
+          oppure proponici nuove iniziative
         </p>
       </div>
 

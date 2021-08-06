@@ -3,7 +3,7 @@ import Fire from "../Fire";
 
 const Home = (props) => {
   return <group position={props.position}>
-    <Gltf url={"/models/DracoHOME.gltf"} />
+    <Gltf url={"/models/HOME.gltf"} />
     <Fire position={[0, 34, 3]} />
   </group>;
 }

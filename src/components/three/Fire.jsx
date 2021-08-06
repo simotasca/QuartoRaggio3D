@@ -1,9 +1,8 @@
-// copy of SimonDev code
+// rivisitation of SimonDev code in r3f way
 
-import { useFrame } from "@react-three/fiber";
-import { Suspense } from "react";
+import { useFrame, useLoader } from "@react-three/fiber";
+import { Suspense, useRef } from "react";
 import {
-  BufferGeometry,
   Color,
   Float32BufferAttribute,
   ShaderMaterial,
@@ -71,27 +70,8 @@ class LinearSpline {
   }
 }
 
-const Fire = ({ position=[0, 0, 0], number=30 }) => {
+const Fire = ({ position = [0, 0, 0], number = 30 }) => {
   const maxLife = 3;
-
-  const geometry = new BufferGeometry();
-  const material = new ShaderMaterial({
-    uniforms: {
-      diffuseTexture: {
-        value: new TextureLoader().load("/resources/fire.png"),
-      },
-      pointMultiplier: {
-        value:
-          window.innerHeight / (2.0 * Math.tan((0.5 * 60.0 * Math.PI) / 180.0)),
-      },
-    },
-    vertexShader: VS,
-    fragmentShader: FS,
-    depthTest: true,
-    depthWrite: false,
-    transparent: true,
-    vertexColors: true,
-  });
 
   //#region splines
   const alphaSpline = new LinearSpline((t, a, b) => {
@@ -187,15 +167,45 @@ const Fire = ({ position=[0, 0, 0], number=30 }) => {
       angles.push(p.rotation);
     }
 
-    geometry.setAttribute("position", new Float32BufferAttribute(positions, 3));
-    geometry.setAttribute("size", new Float32BufferAttribute(sizes, 1));
-    geometry.setAttribute("colour", new Float32BufferAttribute(colors, 4));
-    geometry.setAttribute("angle", new Float32BufferAttribute(angles, 1));
+    geometry.current.setAttribute(
+      "position",
+      new Float32BufferAttribute(positions, 3)
+    );
+    geometry.current.setAttribute("size", new Float32BufferAttribute(sizes, 1));
+    geometry.current.setAttribute(
+      "colour",
+      new Float32BufferAttribute(colors, 4)
+    );
+    geometry.current.setAttribute(
+      "angle",
+      new Float32BufferAttribute(angles, 1)
+    );
   });
+
+  const geometry = useRef();
+  // const texture = useLoader(TextureLoader,"/resources/fire.png");
+  const pointMultiplier =
+    window.innerHeight / (2.0 * Math.tan((0.5 * 60.0 * Math.PI) / 180.0));
 
   return (
     <Suspense fallback={null}>
-      <points material={material} geometry={geometry} />
+      <points>
+        <shaderMaterial
+          uniforms={{
+            diffuseTexture: {
+              value: new TextureLoader().load("/resources/fire.png"),
+            },
+            pointMultiplier: { value: pointMultiplier },
+          }}
+          vertexShader={VS}
+          fragmentShader={FS}
+          depthTest={true}
+          depthWrite={false}
+          transparent={true}
+          vertexColors={true}
+        />
+        <bufferGeometry ref={geometry} />
+      </points>
     </Suspense>
   );
 };

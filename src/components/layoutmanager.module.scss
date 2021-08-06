@@ -32,7 +32,6 @@
   transition: opacity 500ms;
   opacity: 1;
   width: 100%;
-
 }
 
 .page::-webkit-scrollbar {
@@ -50,7 +49,7 @@
 }
 
 .fadeIn {
-  transition: opacity 500ms ;
+  transition: opacity 500ms;
   opacity: 1;
   width: 100%;
 }
@@ -88,6 +87,7 @@
 @media screen and (max-width: 576px) {
   .page {
     padding-left: 10px;
+    padding-right: 10px;
   }
 
   .pageWrapper {

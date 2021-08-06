@@ -1,4 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap-icons/font/bootstrap-icons.css";
+import "../styles/custom.scss";
 import "../styles/body.scss";
 import "../styles/utils.scss";
 import LayoutManager from '../components/LayoutManager'
@@ -22,3 +24,4 @@ function MyApp({ Component, pageProps }) {
 }
 
 export default MyApp
+

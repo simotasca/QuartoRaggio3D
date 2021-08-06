@@ -3,7 +3,7 @@ import { useFrame, useThree } from "@react-three/fiber";
 import { useEffect, useRef } from "react";
 import { MACRO_CHANGE_TIME_MS, PAGE_TOGGLE_TIME_MS } from "../../helpers/animationConfig";
 import { sinInOut } from "../../helpers/easing";
-import { camMinorPositions, camMinorSidePositions, camMinorSideTargets, camMinorTargets, camPositions, camSidePositions, camSideTargets, camTargets } from "../../helpers/macros";
+import { camMinorPositions, camMinorSidePositions, camMinorSideTargets, camMinorTargets, camPositions, camSidePositions, camSideTargets, camTargets, macroPositions, macros } from "../../helpers/macros";
 import usePrevious from "../../hooks/usePrevious";
 import useWindowSize from "../../hooks/useWindowSize";
 
@@ -29,6 +29,10 @@ function CameraManager({ currentMacro }) {
   const screenTreshold = 1.8; // width / height
   const size = useWindowSize();
   const minorPose = (size.width / size.height) < screenTreshold;
+  //#endregion
+
+  //#region TIME CALCULATIONS
+  
   //#endregion
 
   //#region POSITION Spring
