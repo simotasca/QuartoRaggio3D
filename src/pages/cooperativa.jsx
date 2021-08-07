@@ -26,14 +26,14 @@ const CooperativaPage = () => {
             </h1>
             <ChangingElement
               elements={[
-                <p className="text-secondary h2 text-end">
+                <p key={0} className="text-secondary h2 text-end">
                   Portiamo avanti progetti <b className="text-dark">sociali</b>
                 </p>,
-                <p className="text-secondary h2 text-end">
+                <p key={1} className="text-secondary h2 text-end">
                   Organizziamo vendite per{" "}
                   <b className="text-dark">beneficenza</b>
                 </p>,
-                <p className="text-secondary h2 text-end">
+                <p key={2} className="text-secondary h2 text-end">
                   Instauriamo <b className="text-dark">collaborazioni</b>{" "}
                   internazionali
                 </p>,
