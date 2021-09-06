@@ -3,12 +3,12 @@ import { Transition } from "react-transition-group";
 import Menu from "./Menu";
 import styles from "./layoutmanager.module.scss";
 import SocialIcons from "./SocialIcons";
-import { ThreeScene } from "./three";
 import {
   MACRO_CHANGE_TIME_MS,
   PAGE_TOGGLE_TIME_MS,
   WAIT_BETWEEN_MS,
 } from "../helpers/animationConfig";
+import MenuMobile from "./MenuMobile";
 
 function HtmlContent({ children }) {
   const [inProp, setInProp] = useState(true);
@@ -90,19 +90,20 @@ function HtmlContent({ children }) {
             </div>
 
             <div className={styles.envelope}>
-              <Menu />
+              <MenuMobile />
               <div
                 ref={nodeRef}
                 style={{ ...transitionStyles.page[state] }}
                 className={[styles.page].join(" ")}
+                id="page"
               >
                 <div className={styles.pageWrapper}>{displayedChildren}</div>
               </div>
+            <SocialIcons />
             </div>
           </>
         )}
       </Transition>
-      <SocialIcons />
     </>
   );
 }
@@ -110,7 +111,6 @@ function HtmlContent({ children }) {
 const LayoutManager = (props) => {
   return (
     <>
-      <ThreeScene />
       <HtmlContent>{props.children}</HtmlContent>
     </>
   );

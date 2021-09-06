@@ -1,6 +1,12 @@
 import { useEffect, useState } from "react";
+import { Collapse } from "react-bootstrap";
 
-const Expandible = ({ children, hiddenHtml, isToggled = false }) => {
+const Expandible = ({
+  children,
+  hiddenHtml,
+  isToggled = false,
+  duration = 500,
+}) => {
   const [toggled, setToggled] = useState(isToggled);
 
   useEffect(() => {
@@ -8,18 +14,16 @@ const Expandible = ({ children, hiddenHtml, isToggled = false }) => {
   }, [isToggled]);
 
   return (
-    <div onClick={() => setToggled(!toggled)}>
+    <div
+      aria-controls="el-collapse"
+      aria-expanded={toggled}
+      onClick={() => setToggled(!toggled)}
+      style={{cursor: "pointer"}}
+    >
       <p className="mb-0">{children}</p>
-      <p
-        className="mb-0"
-        style={{
-          transition: "height 1000ms",
-          overflow: "hidden",
-          height: toggled ? "auto" : "0px",
-        }}
-      >
-        {hiddenHtml}
-      </p>
+      <Collapse in={toggled} timeout={duration}>
+        <div id="el-collapse">{hiddenHtml}</div>
+      </Collapse>
       <h2
         className={[
           "bi text-lg-end text-center mb-0",

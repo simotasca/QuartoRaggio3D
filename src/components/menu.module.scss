@@ -35,9 +35,6 @@
   box-sizing: border-box;
 }
 
-.cap {
-  font-size: 25px;
-}
 
 .capActv {
   color: $color-warning;
@@ -75,4 +72,47 @@
 .wonderLeyenActv::after {
   transform: scale(1);
   background-color: $color-warning;
+}
+
+.offcanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  height: 100%;
+  max-width: 100%;
+  width: 400px;
+
+  padding: 15px;
+
+  display: flex;
+  flex-direction: column;
+
+  background: white;  
+  
+  z-index: 999;
+
+  transition: 0.5s;
+  
+}
+
+.offcanvasHidden {
+  transform: translateX(-100%);
+}
+
+.offcanvasBlur {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  height: 100%;
+  max-width: 100%;
+  width: 100%;
+
+  background: rgba(105, 105, 105, 0.671);
+  backdrop-filter: blur(1px);
+  
+  z-index: 99;
+
+  transition: .3s;
 }

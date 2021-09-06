@@ -1,7 +1,14 @@
-const CenterSection = ({ children }) => {
+import { useRef } from "react";
+import { forwardRef } from "react";
+
+const CenterSection = forwardRef(({ children }, ref) => {
+
   return (
     <div
+      className="container"
+      ref={ref}
       style={{
+        // scrollSnapAlign: snapAlign,
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
@@ -15,6 +22,8 @@ const CenterSection = ({ children }) => {
       </div>
     </div>
   );
-};
+});
+
+CenterSection.displayName = "CenterSection"; // ESLint error react/display-name
 
 export default CenterSection;

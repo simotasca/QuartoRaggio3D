@@ -1,7 +1,7 @@
 @import "../styles/globals.scss";
 
 .envelope {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
 
@@ -22,31 +22,46 @@
 .page {
   height: 100%;
   margin-top: 10px;
-  margin-bottom: 50px;
+  // margin-bottom: 50px;
   padding-left: 50px;
 
   box-sizing: border-box; /*il padding resta interno al div*/
 
   overflow-x: auto;
+  overflow-y: scroll;
+  display: flex;
 
   transition: opacity 500ms;
   opacity: 1;
   width: 100%;
+
+ //  scroll-snap-type: y mandatory;
+  // -webkit-overflow-scrolling:	touch;
 }
 
 .page::-webkit-scrollbar {
-  right: 0;
-  width: 5px;
+  display: none;
 }
 
-.page::-webkit-scrollbar-track {
-  background: transparent;
+/* Hide scrollbar for IE, Edge and Firefox */
+.page {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
 
-.page::-webkit-scrollbar-thumb {
-  background: $color-primary;
-  border-radius: 2.5px;
-}
+// .page::-webkit-scrollbar {
+//   right: 0;
+//   width: 5px;
+// }
+// 
+// .page::-webkit-scrollbar-track {
+//   background: transparent;
+// }
+// 
+// .page::-webkit-scrollbar-thumb {
+//   background: $color-primary;
+//   border-radius: 2.5px;
+// }
 
 .fadeIn {
   transition: opacity 500ms;

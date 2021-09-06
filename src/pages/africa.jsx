@@ -4,6 +4,8 @@ import CenterSection from "../components/CenterSection";
 import Expandible from "../components/Expandible";
 import { macros } from "../helpers/macros";
 import { MacroContext } from "../store/macroContext";
+import Image from "next/image";
+import bsrImg from "../../public/resources/logoBSR.png";
 
 const AfricaPage = () => {
   const { setCurrentMacro } = useContext(MacroContext);
@@ -52,7 +54,7 @@ const AfricaPage = () => {
           </div>
           <div className="row mt-2 justify-content-end d-flex flex-wrap align-items-center">
             <div className="d-block d-md-none col-12 text-center ">
-              {/*<Image src="resources/logoBSR.png" className="img-fluid shadow rounded" />*/}
+              <Image src={bsrImg} className="img-fluid shadow rounded" />
             </div>
             <div className="col-xl-6 col-md-9 mt-4">
               <p>
@@ -63,7 +65,7 @@ const AfricaPage = () => {
               <Button2>Per sapene di più</Button2>
             </div>
             <div className="d-none d-md-block col-3 text-center">
-              {/*<Image src="resources/logoBSR.png" className="img-fluid shadow rounded" />*/}
+              <Image src={bsrImg} className="img-fluid shadow rounded" />
             </div>
           </div>
         </div>

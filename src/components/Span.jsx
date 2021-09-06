@@ -1,14 +1,12 @@
-const Success = ({ children }) => (
-  <span className="text-success">{children}</span>
+export const Success = ({ children, ...props }) => (
+  <span className="text-success" {...props}>{children}</span>
 );
-const Danger = ({ children }) => (
-  <span className="text-danger">{children}</span>
+export const Danger = ({ children, ...props }) => (
+  <span className="text-danger" {...props}>{children}</span>
 );
-const Secondary = ({ children }) => (
-  <span className="text-secondary">{children}</span>
+export const Secondary = ({ children, ...props }) => (
+  <span className="text-secondary" {...props}>{children}</span>
 );
-const Primary = ({ children }) => (
-  <span className="text-primary">{children}</span>
+export const Primary = ({ children, ...props }) => (
+  <span className="text-primary" {...props}>{children}</span>
 );
-
-export { Success, Secondary, Danger, Primary };

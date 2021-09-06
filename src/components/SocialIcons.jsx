@@ -1,41 +1,17 @@
-import Image from "next/image";
 import styles from "./socialicons.module.scss";
+import Image from "next/image"
+import igImg from "../../public/resources/social/ig.svg";
+import fbImg from "../../public/resources/social/fb.svg";
+import ytImg from "../../public/resources/social/yt.svg";
+import twitImg from "../../public/resources/social/twit.svg";
 
 const SocialIcons = () => {
   return (
     <div className={styles.socialIcons}>
-      <a href="https://instagram.com/quarto_raggio4/" target="_blank" rel="noreferrer">
-        <Image
-          src="/resources/social/ig.svg"
-          alt="ig"
-          height="35px"
-          width="35px"
-        />
-      </a>
-      <a href="https://facebook.com" target="_blank" rel="noreferrer">
-        <Image
-          src="/resources/social/fb.svg"
-          alt="fb"
-          height="35px"
-          width="35px"
-        />
-      </a>
-      <a href="https://youtube.com" target="_blank" rel="noreferrer">
-        <Image
-          src="/resources/social/yt.svg"
-          alt="yt"
-          height="35px"
-          width="35px"
-        />
-      </a>
-      <a href="https://twitter.com" target="_blank" rel="noreferrer">
-        <Image
-          src="/resources/social/twit.svg"
-          alt="tw"
-          height="35px"
-          width="35px"
-        />
-      </a>
+      <Image onClick={() => window.open("https://facebook.com")} src={fbImg} alt="fb" />
+      <Image onClick={() => window.open("https://instagram.com/quarto_raggio4/")} src={igImg} alt="ig" />
+      <Image onClick={() => window.open("https://twitter.com")} src={twitImg} alt="tw" />
+      <Image onClick={() => window.open("https://youtube.com")} src={ytImg} alt="yt" />
     </div>
   );
 };

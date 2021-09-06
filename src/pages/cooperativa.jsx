@@ -1,10 +1,15 @@
-import { useContext, useEffect } from "react";
+import { useCallback, useContext, useEffect, useRef } from "react";
 import { Col, Row } from "react-bootstrap";
+import { useInView } from "react-intersection-observer";
+import Button from "../components/buttons/Button";
 import CenterSection from "../components/CenterSection";
 import ChangingElement from "../components/ChangingElement";
 import ExpandibleTitle from "../components/ExpandibleTitle";
 import { Danger, Success } from "../components/Span";
 import { macros } from "../helpers/macros";
+import { doScroll } from "../helpers/scroll";
+import usePage from "../hooks/usePage";
+import useScrollSection from "../hooks/useScrollSection";
 import CrowdFunding from "../sections/cooperativa/CrowdFunding";
 import Kosher from "../sections/cooperativa/Kosher";
 import Tortorella from "../sections/cooperativa/Tortorella";
@@ -13,6 +18,23 @@ import { MacroContext } from "../store/macroContext";
 const CooperativaPage = () => {
   const { setCurrentMacro } = useContext(MacroContext);
   useEffect(() => setCurrentMacro(macros.cooperativa), [setCurrentMacro]);
+
+  const [expandibles, inView] = useInView({ threshold: 0.1, root: usePage() });
+
+  // const sec1 = useRef();
+  const sec2 = useRef();
+  // useScrollSection([sec1, sec2], 500);
+
+  const lostilo = {
+    opacity: inView ? 1 : 0,
+    transform: "translateX(" + (inView ? 0 : -100) + "%)",
+    transitionTimingFunction: "ease-out",
+  };
+
+  const comb = useCallback((c) => {
+    sec2.current = c;
+    expandibles(c);
+  });
 
   return (
     <>
@@ -43,7 +65,7 @@ const CooperativaPage = () => {
         </Row>
       </CenterSection>
 
-      <CenterSection>
+      <CenterSection ref={comb}>
         <ExpandibleTitle
           title={
             <>
@@ -51,13 +73,17 @@ const CooperativaPage = () => {
             </>
           }
           isToggled={false}
+          duration={2000}
+          style={{ ...lostilo, transition: !inView ? "0s" : ".3s .0s" }}
         >
           <Row className="col ms-4 mt-3">
             <Kosher />
           </Row>
         </ExpandibleTitle>
-
-        <ExpandibleTitle title={"Crowd Funding"}>
+        <ExpandibleTitle
+          title={"Crowd Funding"}
+          style={{ ...lostilo, transition: !inView ? "0s" : ".3s .1s" }}
+        >
           <Row className="col ms-4 mt-3">
             <CrowdFunding />
           </Row>
@@ -69,6 +95,7 @@ const CooperativaPage = () => {
               <Success>Olio</Success> Tortorella
             </>
           }
+          style={{ ...lostilo, transition: !inView ? "0s" : ".3s .2s" }}
         >
           <Row className="col ms-4 mt-3">
             <Tortorella />

@@ -109,7 +109,7 @@ export default function MenuMobile() {
       </Container>
     </Navbar>
     <SidePanel show={show} handleClose={handleClose}>
-      <div className="d-flex flex-column justify-content-around">
+      <ListAnimation visible={show} delay={70} className="d-flex flex-column justify-content-around">
           {menuItems.map((m, i) => (<>
             <MyLink href={m.href} key={i} onClick={handleClose}>
               <h4><b>
@@ -121,7 +121,7 @@ export default function MenuMobile() {
             {i!=menuItems.length?<hr/>:""}
           </>))}
 
-       </div>
+       </ListAnimation>
     </SidePanel>
   
   </>

@@ -1,16 +1,15 @@
 .socialIcons {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  margin: 5px;
-
   display: flex;
   flex-direction: row;
-  gap: 15px;
+  gap: 5px;
+  
 
   z-index: 3;
 
+  max-height: 35px;
+  height: 10%;
+
   img {
-    height: 35px;
+    height: 100%;
   }
 }

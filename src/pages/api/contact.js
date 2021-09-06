@@ -13,7 +13,7 @@ export default function (req, res) {
     host: "smtp.gmail.com",
     auth: {
       user: 'mailservice.quarto.raggio@gmail.com',
-      pass: 'mailservice'
+      pass: 'mailservice123'
       //pass: process.env.password,
     },
     secure: true,
@@ -28,8 +28,10 @@ export default function (req, res) {
   }
 
   transporter.sendMail(mailData, function (err, info) {
-    if (err)
+    if (err) {
+      console.log("WEEH ERROR")
       console.log(err)
+    }
     else
       console.log(info)
   })

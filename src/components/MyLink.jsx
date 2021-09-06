@@ -1,13 +1,15 @@
 import React from "react";
 import Link from "next/link";
 
-const MyLink = ({ href = "/", className="", style = {}, ...props }) => {
+const MyLink = ({children,  href = "/", className="", style = {}, ...props }) => {
   return (
-    <Link href={href} style={{ cursor: "pointer", ...style }}>
-      <a className={className + " primary"} style={{ textDecoration: "none" }}>
-        {props.children}
-      </a>
-    </Link>
+    <div {...props} style={{ cursor: "pointer", ...style }}>
+      <Link href={href}>
+        <a className={className + " primary"} style={{ textDecoration: "none" }}>
+          {children}
+        </a>
+      </Link>
+    </div>
   );
 };
 
