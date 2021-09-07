@@ -1,4 +1,3 @@
-import dynamic from 'next/dynamic';
 import { useCallback, useContext, useEffect, useRef } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { useInView } from 'react-intersection-observer';
@@ -12,10 +11,6 @@ import usePage from '../hooks/usePage';
 // import Kosher from '../sections/cooperativa/Kosher';
 // import Tortorella from '../sections/cooperativa/Tortorella';
 import { MacroContext } from '../store/macroContext';
-
-const Kosher = dynamic(() => import('../sections/cooperativa/Kosher'));
-const CrowdFunding = dynamic(() => import('../sections/cooperativa/CrowdFunding'));
-const Tortorella = dynamic(() => import('../sections/cooperativa/Tortorella'));
 
 // const WirelessPrepaid = loadWirelessBundle ? WirelessPrepaidDynamicComponent : () => null;
 

@@ -1,12 +1,12 @@
+import dynamic from 'next/dynamic';
 import { useEffect, useRef, useState } from 'react';
 import { Row } from 'react-bootstrap';
+const Kosher = dynamic(() => import('../sections/cooperativa/Kosher'));
 
 function ExpandibleTitle({ children, title, isOpen, duration, style = {} }) {
   const [open, setOpen] = useState(isOpen);
   const [height, setHeight] = useState(0);
   const collapse = useRef();
-
-  const Kosher = dynamic(() => import('../sections/cooperativa/Kosher'));
 
   useEffect(() => {
     console.log(collapse.current.clientHeight);
