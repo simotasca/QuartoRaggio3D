@@ -26,7 +26,7 @@ const CooperativaPage = () => {
 
   const lostilo = {
     willChange: 'opacity transform',
-    opacity: inView ? 1 : 0,
+    // opacity: inView ? 1 : 0,
     transform: `translateX(${inView ? 0 : -100}%)`,
     transitionTimingFunction: 'ease-out'
   };
