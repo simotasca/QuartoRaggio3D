@@ -1,61 +1,13 @@
-import React, { useEffect, useState, useRef } from "react";
-import { Transition } from "react-transition-group";
-import Menu from "./Menu";
-import styles from "./layoutmanager.module.scss";
-import SocialIcons from "./SocialIcons";
-import {
-  MACRO_CHANGE_TIME_MS,
-  PAGE_TOGGLE_TIME_MS,
-  WAIT_BETWEEN_MS,
-} from "../helpers/animationConfig";
-import MenuMobile from "./MenuMobile";
+import React, { useEffect, useState } from 'react';
+import { MACRO_CHANGE_TIME_MS, PAGE_TOGGLE_TIME_MS, WAIT_BETWEEN_MS } from '../helpers/animationConfig';
+import styles from './layoutmanager.module.scss';
+import MenuMobile from './MenuMobile';
+import SocialIcons from './SocialIcons';
+// import { ThreeScene } from './three';
 
 function HtmlContent({ children }) {
-  const [inProp, setInProp] = useState(true);
+  const [visible, setVisible] = useState(true);
   const [displayedChildren, setDisplayedChildren] = useState(null);
-
-  const duration = {
-    appear: PAGE_TOGGLE_TIME_MS,
-    enter: MACRO_CHANGE_TIME_MS + WAIT_BETWEEN_MS,
-    exit: PAGE_TOGGLE_TIME_MS,
-  };
-
-  const transitionStyles = {
-    page: {
-      entering: {
-        opacity: 0,
-      },
-      entered: {
-        opacity: 1,
-        transition: "opacity " + PAGE_TOGGLE_TIME_MS + "ms",
-      },
-      exiting: {
-        opacity: 0,
-        transition: "opacity " + PAGE_TOGGLE_TIME_MS + "ms",
-      },
-      exited: {
-        opacity: 0,
-      },
-    },
-    panel: {
-      entering: {
-        width: "0%",
-      },
-      entered: {
-        width: "100%",
-        transition: "width " + PAGE_TOGGLE_TIME_MS + "ms",
-      },
-      exiting: {
-        width: "0%",
-        transition: "width " + PAGE_TOGGLE_TIME_MS + "ms",
-      },
-      exited: {
-        width: "0%",
-      },
-    },
-  };
-
-  const nodeRef = useRef(null);
 
   useEffect(() => {
     if (displayedChildren == null) {
@@ -63,47 +15,42 @@ function HtmlContent({ children }) {
       // la key è settata in app ed è il route corrispondente
       // se il route non cambia non si ha l'animazione
     } else if (displayedChildren.key !== children.key) {
-      setInProp(false);
+      setVisible(false);
+
+      const timer = setTimeout(() => {
+        setVisible(true);
+        setDisplayedChildren(children);
+      }, PAGE_TOGGLE_TIME_MS);
+
+      return () => clearTimeout(timer);
     }
   }, [children]);
 
-  const onExitedHandler = () => {
-    setDisplayedChildren(children);
-    setInProp(true);
-  };
-
   return (
     <>
-      <Transition
-        nodeRef={nodeRef}
-        in={inProp}
-        timeout={duration}
-        onExited={onExitedHandler}
-      >
-        {(state) => (
-          <>
-            <div className={styles.panelWrapper}>
-              <div
-                style={{ ...transitionStyles.panel[state] }}
-                className={[styles.panel].join(" ")}
-              />
-            </div>
+      <div className={styles.panelWrapper}>
+        <div
+          style={{
+            transform: visible ? 'translateX(0%)' : 'translateX(-100%)',
+            transition: visible ? `transform ${PAGE_TOGGLE_TIME_MS}ms ${MACRO_CHANGE_TIME_MS + WAIT_BETWEEN_MS}ms` : `transform ${PAGE_TOGGLE_TIME_MS}ms`
+          }}
+          className={styles.panel}
+        />
+      </div>
 
-            <div className={styles.envelope}>
-              <MenuMobile />
-              <div
-                ref={nodeRef}
-                style={{ ...transitionStyles.page[state] }}
-                className={[styles.page].join(" ")}
-                id="page"
-              >
-                <div className={styles.pageWrapper}>{displayedChildren}</div>
-              </div>
-            <SocialIcons />
-            </div>
-          </>
-        )}
-      </Transition>
+      <div className={styles.envelope}>
+        <MenuMobile />
+        <div
+          style={{
+            opacity: visible ? '1' : '0',
+            transition: visible ? `opacity ${PAGE_TOGGLE_TIME_MS}ms ${MACRO_CHANGE_TIME_MS + WAIT_BETWEEN_MS}ms` : `opacity ${PAGE_TOGGLE_TIME_MS}ms`
+          }}
+          className={styles.page}
+          id="page">
+          <div className={styles.pageWrapper}>{displayedChildren}</div>
+        </div>
+        <SocialIcons />
+      </div>
     </>
   );
 }
@@ -111,6 +58,7 @@ function HtmlContent({ children }) {
 const LayoutManager = (props) => {
   return (
     <>
+      {/*<ThreeScene />*/}
       <HtmlContent>{props.children}</HtmlContent>
     </>
   );

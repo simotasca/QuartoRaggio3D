@@ -40,9 +40,9 @@ const ListAnimation = ({transitionDuration=400, delay=50, className, childClassN
               <div
                 className={childClassName}
                 style={{
-                  transition: `opacity ${transitionDuration}ms, transform ${transitionDuration}ms`,
-                  transform: maxIsVisible > i ? "none" : "translateY(20px)",
-                  opacity: maxIsVisible > i ? 1 : 0,
+                  willChange: "transform",
+                  transition: `transform ${transitionDuration}ms`,
+                  transform: maxIsVisible > i ? "none" : "translateY(50px)",
                 }}
               >
                 {child}

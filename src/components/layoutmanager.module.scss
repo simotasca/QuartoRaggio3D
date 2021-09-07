@@ -1,4 +1,4 @@
-@import "../styles/globals.scss";
+@import '../styles/globals.scss';
 
 .envelope {
   position: fixed;
@@ -35,7 +35,7 @@
   opacity: 1;
   width: 100%;
 
- //  scroll-snap-type: y mandatory;
+  //  scroll-snap-type: y mandatory;
   // -webkit-overflow-scrolling:	touch;
 }
 
@@ -45,19 +45,19 @@
 
 /* Hide scrollbar for IE, Edge and Firefox */
 .page {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
 // .page::-webkit-scrollbar {
 //   right: 0;
 //   width: 5px;
 // }
-// 
+//
 // .page::-webkit-scrollbar-track {
 //   background: transparent;
 // }
-// 
+//
 // .page::-webkit-scrollbar-thumb {
 //   background: $color-primary;
 //   border-radius: 2.5px;
@@ -83,6 +83,7 @@
   height: 100%;
   background: linear-gradient(to right, rgb(255, 255, 255), transparent);
   backdrop-filter: blur(2px);
+  will-change: transform;
 }
 
 .panelFadeIn {
@@ -114,10 +115,6 @@
   }
 
   .panel {
-    background: linear-gradient(
-      to right,
-      rgb(255, 255, 255),
-      rgb(255, 255, 255, 0.6)
-    );
+    background: linear-gradient(to right, rgb(255, 255, 255), rgb(255, 255, 255, 0.6));
   }
 }
