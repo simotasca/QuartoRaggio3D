@@ -74,16 +74,8 @@ const CooperativaPage = () => {
               Certificazione <Danger>Kosher</Danger>
             </>
           }
-          style={{ ...lostilo, transition: !inView ? '0s' : '.3s .0s' }}>
-          <Row className="col ms-4 mt-3">
-            <Kosher />
-          </Row>
-        </ExpandibleTitle>
-        <ExpandibleTitle title={'Crowd Funding'} style={{ ...lostilo, transition: !inView ? '0s' : '.3s .1s' }}>
-          <Row className="col ms-4 mt-3">
-            <CrowdFunding />
-          </Row>
-        </ExpandibleTitle>
+          style={{ ...lostilo, transition: !inView ? '0s' : '.3s .0s' }}></ExpandibleTitle>
+        <ExpandibleTitle title={'Crowd Funding'} style={{ ...lostilo, transition: !inView ? '0s' : '.3s .1s' }}></ExpandibleTitle>
 
         <ExpandibleTitle
           title={
@@ -91,11 +83,7 @@ const CooperativaPage = () => {
               <Success>Olio</Success> Tortorella
             </>
           }
-          style={{ ...lostilo, transition: !inView ? '0s' : '.3s .2s' }}>
-          <Row className="col ms-4 mt-3">
-            <Tortorella />
-          </Row>
-        </ExpandibleTitle>
+          style={{ ...lostilo, transition: !inView ? '0s' : '.3s .2s' }}></ExpandibleTitle>
       </CenterSection>
     </>
   );
