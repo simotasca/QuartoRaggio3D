@@ -3,7 +3,7 @@ import { MACRO_CHANGE_TIME_MS, PAGE_TOGGLE_TIME_MS, WAIT_BETWEEN_MS } from '../h
 import styles from './layoutmanager.module.scss';
 import MenuMobile from './MenuMobile';
 import SocialIcons from './SocialIcons';
-// import { ThreeScene } from './three';
+import { ThreeScene } from './three';
 
 function HtmlContent({ children }) {
   const [visible, setVisible] = useState(true);
@@ -58,7 +58,7 @@ function HtmlContent({ children }) {
 const LayoutManager = (props) => {
   return (
     <>
-      {/*<ThreeScene />*/}
+      <ThreeScene />
       <HtmlContent>{props.children}</HtmlContent>
     </>
   );
