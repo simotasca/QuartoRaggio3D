@@ -23,18 +23,16 @@ function ExpandibleTitle({ children, title, isOpen, duration, style = {} }) {
         style={{
           overflow: 'hidden',
           willChange: 'height',
-
           height: open ? height + 'px' : '0px',
           transition: `height ${duration || 500}ms ease-in-out`
         }}>
         <div ref={collapse}>
-          {children}
+          {open && children}
           <div className="d-flex justify-content-center" onClick={() => setOpen(!open)}>
             <span className="h1 bi bi-chevron-compact-up"></span>
           </div>
         </div>
       </div>
-
       <hr />
     </div>
   );
