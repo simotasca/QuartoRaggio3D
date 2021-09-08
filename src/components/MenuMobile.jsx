@@ -51,7 +51,7 @@ const menuItems = [
 function SidePanel({ children, show, handleClose }) {
   return (
     <>
-      <div className={[styles.offcanvas, show ? '' : styles.offcanvasHidden].join(' ')}>
+      <div className={[styles.offcanvas, show ? '' : styles.offcanvasHidden, 'd-lg-none'].join(' ')}>
         <div className="mt-3">
           <h4 className="bi bi-x-lg float-end me-2 secondary" onClick={handleClose} />
           <div className="mx-auto text-center">
@@ -80,9 +80,9 @@ export default function MenuMobile() {
           <Navbar.Brand className="navbar-brand">
             <Logo />
           </Navbar.Brand>
-          <Navbar.Toggle style={{ transition: 'none' }} onClick={handleShow}>
+          <div className="d-lg-none" style={{ transition: 'none' }} onClick={() => setShow(!show)}>
             <Primary className="bi bi-stack" />
-          </Navbar.Toggle>
+          </div>
           <Navbar.Collapse hidden>
             <Nav className="ms-auto mb-2 mb-lg-0">
               {menuItems.map((m, i) => (
