@@ -111,7 +111,7 @@ export default function MenuMobile() {
           ))}
         </div>
       </SidePanel>
-      <div className={[styles.offcanvasBlur, ''].join(' ')} style={show ? {} : { opacity: '0', zIndex: '-1' }} onClick={handleClose} />
+      {/*<div className={[styles.offcanvasBlur, ''].join(' ')} style={show ? {} : { opacity: '0', zIndex: '-1' }} onClick={handleClose} />*/}
     </>
   );
 }
