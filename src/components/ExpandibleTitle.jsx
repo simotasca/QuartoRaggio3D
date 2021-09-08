@@ -1,7 +1,4 @@
-import dynamic from 'next/dynamic';
 import { useEffect, useRef, useState } from 'react';
-import { Row } from 'react-bootstrap';
-const Kosher = dynamic(() => import('../sections/cooperativa/Kosher'));
 
 function ExpandibleTitle({ children, title, isOpen, duration, style = {} }) {
   const [open, setOpen] = useState(isOpen);
@@ -30,12 +27,13 @@ function ExpandibleTitle({ children, title, isOpen, duration, style = {} }) {
           transition: `height ${duration || 500}ms ease-in-out`
         }}>
         <div ref={collapse}>
-          <Row className="col ms-4 mt-3">{open && <Kosher />}</Row>
+          {children}
           <div className="d-flex justify-content-center" onClick={() => setOpen(!open)}>
             <span className="h1 bi bi-chevron-compact-up"></span>
           </div>
         </div>
       </div>
+
       <hr />
     </div>
   );

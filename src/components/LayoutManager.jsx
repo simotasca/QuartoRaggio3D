@@ -3,7 +3,6 @@ import { MACRO_CHANGE_TIME_MS, PAGE_TOGGLE_TIME_MS, WAIT_BETWEEN_MS } from '../h
 import styles from './layoutmanager.module.scss';
 import MenuMobile from './MenuMobile';
 import SocialIcons from './SocialIcons';
-import { ThreeScene } from './three';
 
 function HtmlContent({ children }) {
   const [visible, setVisible] = useState(true);
@@ -20,7 +19,7 @@ function HtmlContent({ children }) {
       const timer = setTimeout(() => {
         setVisible(true);
         setDisplayedChildren(children);
-      }, PAGE_TOGGLE_TIME_MS);
+      }, PAGE_TOGGLE_TIME_MS + 200);
 
       return () => clearTimeout(timer);
     }
@@ -31,8 +30,8 @@ function HtmlContent({ children }) {
       <div className={styles.panelWrapper}>
         <div
           style={{
-            transform: visible ? 'translateX(0%)' : 'translateX(-100%)',
-            transition: visible ? `transform ${PAGE_TOGGLE_TIME_MS}ms ${MACRO_CHANGE_TIME_MS + WAIT_BETWEEN_MS}ms` : `transform ${PAGE_TOGGLE_TIME_MS}ms`
+            transform: visible ? 'translate3d(0%, 0, 0)' : 'translate3d(-100%, 0, 0)',
+            transition: visible ? `transform ${PAGE_TOGGLE_TIME_MS}ms ${MACRO_CHANGE_TIME_MS + WAIT_BETWEEN_MS + 200}ms` : `transform ${PAGE_TOGGLE_TIME_MS}ms 200ms`
           }}
           className={styles.panel}
         />
@@ -43,7 +42,7 @@ function HtmlContent({ children }) {
         <div
           style={{
             opacity: visible ? '1' : '0',
-            transition: visible ? `opacity ${PAGE_TOGGLE_TIME_MS}ms ${MACRO_CHANGE_TIME_MS + WAIT_BETWEEN_MS}ms` : `opacity ${PAGE_TOGGLE_TIME_MS}ms`
+            transition: visible ? `opacity ${PAGE_TOGGLE_TIME_MS}ms ${MACRO_CHANGE_TIME_MS + WAIT_BETWEEN_MS + 200}ms` : `opacity ${PAGE_TOGGLE_TIME_MS}ms 200ms`
           }}
           className={styles.page}
           id="page">
@@ -58,7 +57,6 @@ function HtmlContent({ children }) {
 const LayoutManager = (props) => {
   return (
     <>
-      <ThreeScene />
       <HtmlContent>{props.children}</HtmlContent>
     </>
   );

@@ -80,7 +80,7 @@ export default function MenuMobile() {
           <Navbar.Brand className="navbar-brand">
             <Logo />
           </Navbar.Brand>
-          <Navbar.Toggle onClick={handleShow}>
+          <Navbar.Toggle style={{ transition: 'none' }} onClick={handleShow}>
             <Primary className="bi bi-stack" />
           </Navbar.Toggle>
           <Navbar.Collapse hidden>
