@@ -11,14 +11,12 @@ import {
   camPositions,
   camSidePositions,
   camSideTargets,
-  camTargets,
-  macroPositions,
-  macros
+  camTargets
 } from '../../helpers/macros';
 import usePrevious from '../../hooks/usePrevious';
 import useWindowSize from '../../hooks/useWindowSize';
 
-function CameraManager({ currentMacro }) {
+function CameraManager({ currentMacro, start, stop }) {
   //#region CAMERA SETTINGS
   const cam = useRef();
   const threeSet = useThree((state) => state.set);
@@ -42,20 +40,16 @@ function CameraManager({ currentMacro }) {
   const minorPose = size.width / size.height < screenTreshold;
   //#endregion
 
-  //#region TIME CALCULATIONS
-
-  //#endregion
-
   //#region POSITION Spring
   const { positionCoords } = useSpring({
     to: !minorPose
       ? [
           changedMacro ? { positionCoords: camPositions[currMacro], config: { duration: MACRO_CHANGE_TIME_MS, easing: sinInOut } } : {},
-          { positionCoords: camSidePositions[currMacro], config: { duration: PAGE_TOGGLE_TIME_MS, easing: sinInOut } }
+          { positionCoords: camSidePositions[currMacro], config: { duration: PAGE_TOGGLE_TIME_MS, easing: sinInOut }, onRest: () => stop() }
         ]
       : [
           changedMacro ? { positionCoords: camMinorPositions[currMacro], config: { duration: MACRO_CHANGE_TIME_MS, easing: sinInOut } } : {},
-          { positionCoords: camMinorSidePositions[currMacro], config: { duration: PAGE_TOGGLE_TIME_MS, easing: sinInOut } }
+          { positionCoords: camMinorSidePositions[currMacro], config: { duration: PAGE_TOGGLE_TIME_MS, easing: sinInOut }, onRest: () => stop() }
         ]
   });
   //#endregion

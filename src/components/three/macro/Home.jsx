@@ -1,11 +1,13 @@
-import Gltf from "./Gltf";
-import Fire from "../Fire";
+import Gltf from './Gltf';
+import Fire from '../Fire';
+import { useState } from 'react';
 
-const Home = (props) => {
-  return <group position={props.position}>
-    <Gltf url={"/models/HOME.gltf"} />
-    <Fire position={[0, 34, 3]} />
-  </group>;
+export default function Home(props) {
+  const [loaded, setLoaded] = useState(false);
+  return (
+    <group position={props.position}>
+      <Gltf url={'/models/HOME.gltf'} setLoaded={setLoaded} />
+      {loaded && <Fire position={[0, 34, 3]} />}
+    </group>
+  );
 }
-
-export default Home;

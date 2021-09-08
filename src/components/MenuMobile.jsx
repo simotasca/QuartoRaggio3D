@@ -52,7 +52,7 @@ function SidePanel({ children, show, handleClose }) {
   return (
     <>
       <div className={[styles.offcanvas, show ? '' : styles.offcanvasHidden, 'd-lg-none'].join(' ')}>
-        <div className="mt-3">
+        <div className="mt-3 mb-3">
           <h4 className="bi bi-x-lg float-end me-2 secondary" onClick={handleClose} />
           <div className="mx-auto text-center">
             <Image src="/resources/Risorsa.svg" alt="No cap" height="50px" width="50px" />
@@ -64,14 +64,11 @@ function SidePanel({ children, show, handleClose }) {
   );
 }
 
-// <div className={styles.offcanvasBlur} style={show?{}:{opacity: "0", zIndex: "-1"}} onClick={handleClose} />
-
 export default function MenuMobile() {
   const { macro } = useContext(MacroContext);
 
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
 
   return (
     <>
@@ -114,6 +111,7 @@ export default function MenuMobile() {
           ))}
         </div>
       </SidePanel>
+      <div className={[styles.offcanvasBlur, ''].join(' ')} style={show ? {} : { opacity: '0', zIndex: '-1' }} onClick={handleClose} />
     </>
   );
 }

@@ -1,13 +1,17 @@
-import React, { useEffect, useState } from 'react';
-import { MACRO_CHANGE_TIME_MS, PAGE_TOGGLE_TIME_MS, WAIT_BETWEEN_MS } from '../helpers/animationConfig';
+import React, { useContext, useEffect, useState } from 'react';
+import { PAGE_TOGGLE_TIME_MS } from '../helpers/animationConfig';
+import { AnimationContext } from '../store/animationContext';
 import styles from './layoutmanager.module.scss';
 import MenuMobile from './MenuMobile';
 import SocialIcons from './SocialIcons';
+import ThreeScene from './three/ThreeScene';
 
-function HtmlContent({ children }) {
+const LayoutManager = ({ children }) => {
+  const { isAnimating, startAnimating } = useContext(AnimationContext);
   const [visible, setVisible] = useState(true);
   const [displayedChildren, setDisplayedChildren] = useState(null);
 
+  //#region animation
   useEffect(() => {
     if (displayedChildren == null) {
       setDisplayedChildren(children);
@@ -15,6 +19,7 @@ function HtmlContent({ children }) {
       // se il route non cambia non si ha l'animazione
     } else if (displayedChildren.key !== children.key) {
       setVisible(false);
+      startAnimating();
 
       const timer = setTimeout(() => {
         setVisible(true);
@@ -25,24 +30,27 @@ function HtmlContent({ children }) {
     }
   }, [children]);
 
+  //#endregion
+
   return (
     <>
+      <ThreeScene />
       <div className={styles.panelWrapper}>
         <div
           style={{
-            transform: visible ? 'translate3d(0%, 0, 0)' : 'translate3d(-100%, 0, 0)',
-            transition: visible ? `transform ${PAGE_TOGGLE_TIME_MS}ms ${MACRO_CHANGE_TIME_MS + WAIT_BETWEEN_MS + 200}ms` : `transform ${PAGE_TOGGLE_TIME_MS}ms 200ms`
+            willChange: 'transform',
+            transform: visible & !isAnimating ? 'translate3d(0%, 0, 0)' : 'translate3d(-100%, 0, 0)',
+            transition: visible & !isAnimating ? `transform ${PAGE_TOGGLE_TIME_MS}ms` : `transform ${PAGE_TOGGLE_TIME_MS}ms 201ms`
           }}
           className={styles.panel}
         />
       </div>
-
       <div className={styles.envelope}>
         <MenuMobile />
         <div
           style={{
-            opacity: visible ? '1' : '0',
-            transition: visible ? `opacity ${PAGE_TOGGLE_TIME_MS}ms ${MACRO_CHANGE_TIME_MS + WAIT_BETWEEN_MS + 200}ms` : `opacity ${PAGE_TOGGLE_TIME_MS}ms 200ms`
+            opacity: visible & !isAnimating ? '1' : '0',
+            transition: visible & !isAnimating ? `opacity ${PAGE_TOGGLE_TIME_MS}ms` : `opacity ${PAGE_TOGGLE_TIME_MS}ms 201ms`
           }}
           className={styles.page}
           id="page">
@@ -50,14 +58,6 @@ function HtmlContent({ children }) {
         </div>
         <SocialIcons />
       </div>
-    </>
-  );
-}
-
-const LayoutManager = (props) => {
-  return (
-    <>
-      <HtmlContent>{props.children}</HtmlContent>
     </>
   );
 };

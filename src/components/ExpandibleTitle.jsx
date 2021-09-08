@@ -6,7 +6,6 @@ function ExpandibleTitle({ children, title, isOpen, duration, style = {} }) {
   const collapse = useRef();
 
   useEffect(() => {
-    console.log(collapse.current.clientHeight);
     setHeight(collapse.current.clientHeight);
   }, [height, setHeight, collapse]);
 
