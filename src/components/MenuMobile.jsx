@@ -50,17 +50,15 @@ const menuItems = [
 
 function SidePanel({ children, show, handleClose }) {
   return (
-    <>
-      <div className={[styles.offcanvas, show ? '' : styles.offcanvasHidden, 'd-lg-none'].join(' ')}>
-        <div className="mt-3 mb-3">
-          <h4 className="bi bi-x-lg float-end me-2 secondary" onClick={handleClose} />
-          <div className="mx-auto text-center">
-            <Image src="/resources/Risorsa.svg" alt="No cap" height="50px" width="50px" />
-          </div>
+    <div className={[styles.offcanvas, !show ? styles.offcanvasHidden : '', 'd-lg-none'].join(' ')}>
+      <div className="mt-3 mb-3">
+        <h4 className="bi bi-x-lg float-end me-2 secondary" onClick={handleClose} />
+        <div className="mx-auto text-center">
+          <Image src="/resources/Risorsa.svg" alt="No cap" height="50px" width="50px" />
         </div>
-        <div>{children}</div>
       </div>
-    </>
+      <div>{children}</div>
+    </div>
   );
 }
 

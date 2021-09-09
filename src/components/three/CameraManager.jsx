@@ -20,6 +20,7 @@ function CameraManager({ currentMacro, start, stop }) {
   //#region CAMERA SETTINGS
   const cam = useRef();
   const threeSet = useThree((state) => state.set);
+
   useEffect(() => {
     // non so perchè non lo fa da solo sto figlio di puta
     cam.current.aspect = window.innerWidth / window.innerHeight;
@@ -27,7 +28,6 @@ function CameraManager({ currentMacro, start, stop }) {
 
     threeSet({ camera: cam.current });
   }, [threeSet]);
-
   //#endregion
 
   //#region SPRING SETTINGS
@@ -44,12 +44,12 @@ function CameraManager({ currentMacro, start, stop }) {
   const { positionCoords } = useSpring({
     to: !minorPose
       ? [
-          changedMacro ? { positionCoords: camPositions[currMacro], config: { duration: MACRO_CHANGE_TIME_MS, easing: sinInOut } } : {},
-          { positionCoords: camSidePositions[currMacro], config: { duration: PAGE_TOGGLE_TIME_MS, easing: sinInOut }, onRest: () => stop() }
+          changedMacro ? { positionCoords: camPositions[currMacro], config: { duration: MACRO_CHANGE_TIME_MS, easing: sinInOut }, onRest: () => stop() } : {},
+          { positionCoords: camSidePositions[currMacro], config: { duration: PAGE_TOGGLE_TIME_MS, easing: sinInOut } }
         ]
       : [
-          changedMacro ? { positionCoords: camMinorPositions[currMacro], config: { duration: MACRO_CHANGE_TIME_MS, easing: sinInOut } } : {},
-          { positionCoords: camMinorSidePositions[currMacro], config: { duration: PAGE_TOGGLE_TIME_MS, easing: sinInOut }, onRest: () => stop() }
+          changedMacro ? { positionCoords: camMinorPositions[currMacro], config: { duration: MACRO_CHANGE_TIME_MS, easing: sinInOut }, onRest: () => stop() } : {},
+          { positionCoords: camMinorSidePositions[currMacro], config: { duration: PAGE_TOGGLE_TIME_MS, easing: sinInOut } }
         ]
   });
   //#endregion

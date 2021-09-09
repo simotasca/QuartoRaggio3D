@@ -1,14 +1,8 @@
 // rivisitation of SimonDev code in r3f way
 
-import { useFrame, useLoader } from "@react-three/fiber";
-import { Suspense, useRef } from "react";
-import {
-  Color,
-  Float32BufferAttribute,
-  ShaderMaterial,
-  TextureLoader,
-  Vector3,
-} from "three";
+import { useFrame } from '@react-three/fiber';
+import { Suspense, useMemo, useRef } from 'react';
+import { Color, Float32BufferAttribute, TextureLoader, Vector3 } from 'three';
 
 //#region SHADERS
 const VS = `
@@ -62,11 +56,7 @@ class LinearSpline {
       return this._points[p1][1];
     }
 
-    return this._lerp(
-      (t - this._points[p1][0]) / (this._points[p2][0] - this._points[p1][0]),
-      this._points[p1][1],
-      this._points[p2][1]
-    );
+    return this._lerp((t - this._points[p1][0]) / (this._points[p2][0] - this._points[p1][0]), this._points[p1][1], this._points[p2][1]);
   }
 }
 
@@ -97,24 +87,23 @@ const Fire = ({ position = [0, 0, 0], number = 30 }) => {
   sizeSpline.AddPoint(1.0, 1.0);
   //#endregion
 
+  //#region particles inizialization
   let particles = [];
   for (let i = 0; i < number; i++) {
     const life = (Math.random() * 0.75 + 0.25) * maxLife;
     particles.push({
-      position: new Vector3(
-        position[0] + (Math.random() * 2 - 1) * 0.7,
-        position[1] + (Math.random() * 2 - 1) * 1,
-        position[2] + (Math.random() * 2 - 1) * 0.7
-      ),
+      position: new Vector3(position[0] + (Math.random() * 2 - 1) * 0.7, position[1] + (Math.random() * 2 - 1) * 1, position[2] + (Math.random() * 2 - 1) * 0.7),
       size: (Math.random() * 0.5 + 0.5) * 4.0,
       life: life,
       maxLife: life,
       rotation: Math.random() * 2.0 * Math.PI,
       velocity: new Vector3(0, -4, 0),
-      color: new Color(),
+      color: new Color()
     });
   }
+  //#endregion
 
+  //#region three animation loop
   useFrame((state, delta) => {
     for (let p of particles) {
       p.life -= delta;
@@ -143,15 +132,9 @@ const Fire = ({ position = [0, 0, 0], number = 30 }) => {
 
       const drag = p.velocity.clone();
       drag.multiplyScalar(delta * 0.1);
-      drag.x =
-        Math.sign(p.velocity.x) *
-        Math.min(Math.abs(drag.x), Math.abs(p.velocity.x));
-      drag.y =
-        Math.sign(p.velocity.y) *
-        Math.min(Math.abs(drag.y), Math.abs(p.velocity.y));
-      drag.z =
-        Math.sign(p.velocity.z) *
-        Math.min(Math.abs(drag.z), Math.abs(p.velocity.z));
+      drag.x = Math.sign(p.velocity.x) * Math.min(Math.abs(drag.x), Math.abs(p.velocity.x));
+      drag.y = Math.sign(p.velocity.y) * Math.min(Math.abs(drag.y), Math.abs(p.velocity.y));
+      drag.z = Math.sign(p.velocity.z) * Math.min(Math.abs(drag.z), Math.abs(p.velocity.z));
       p.velocity.sub(drag);
     }
 
@@ -167,36 +150,23 @@ const Fire = ({ position = [0, 0, 0], number = 30 }) => {
       angles.push(p.rotation);
     }
 
-    geometry.current.setAttribute(
-      "position",
-      new Float32BufferAttribute(positions, 3)
-    );
-    geometry.current.setAttribute("size", new Float32BufferAttribute(sizes, 1));
-    geometry.current.setAttribute(
-      "colour",
-      new Float32BufferAttribute(colors, 4)
-    );
-    geometry.current.setAttribute(
-      "angle",
-      new Float32BufferAttribute(angles, 1)
-    );
+    geometry.current.setAttribute('position', new Float32BufferAttribute(positions, 3));
+    geometry.current.setAttribute('size', new Float32BufferAttribute(sizes, 1));
+    geometry.current.setAttribute('colour', new Float32BufferAttribute(colors, 4));
+    geometry.current.setAttribute('angle', new Float32BufferAttribute(angles, 1));
   });
+  //#endregion
 
   const geometry = useRef();
   // const texture = useLoader(TextureLoader,"/resources/fire.png");
-  const pointMultiplier =
-    window.innerHeight / (2.0 * Math.tan((0.5 * 60.0 * Math.PI) / 180.0));
+  const texture = useMemo(() => new TextureLoader().load('/resources/fire.png'), []);
+  const pointMultiplier = useMemo(() => window.innerHeight / (2.0 * Math.tan((0.5 * 60.0 * Math.PI) / 180.0)));
 
   return (
     <Suspense fallback={null}>
       <points>
         <shaderMaterial
-          uniforms={{
-            diffuseTexture: {
-              value: new TextureLoader().load("/resources/fire.png"),
-            },
-            pointMultiplier: { value: pointMultiplier },
-          }}
+          uniforms={{ diffuseTexture: { value: texture }, pointMultiplier: { value: pointMultiplier } }}
           vertexShader={VS}
           fragmentShader={FS}
           depthTest={true}
