@@ -11,14 +11,13 @@ const Cap = ({ children, active }) => {
   const capRef = useRef(null);
   useEffect(() => {
     let fSize = getComputedStyle(ref.current)['font-size'];
-    fSize = fSize.substring(0, fSize.length - 2);
-    fSize = parseInt(fSize);
+    fSize = parseInt(fSize.substring(0, fSize.length - 2));
     capRef.current.style.fontSize = `${fSize * 1.3}px`;
   }, [ref, capRef]);
 
   return (
     <span ref={ref}>
-      <span ref={capRef} style={{ willChange: 'font-size' }} className={active ? styles.capActv : ''}>
+      <span ref={capRef} className={active ? styles.capActv : ''}>
         {children.charAt(0)}
       </span>
       {children.substring(1, children.length)}
