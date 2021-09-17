@@ -3,12 +3,13 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 import '../styles/custom.scss';
 import '../styles/body.scss';
 import '../styles/utils.scss';
-import LayoutManager from '../components/LayoutManager';
-import { MacroContext } from '../store/macroContext';
 import { useRouter } from 'next/dist/client/router';
-import { AnimationContext } from '../store/animationContext';
 import useAnimationContext from '../hooks/store/useAnimationContext';
 import useMacroContext from '../hooks/store/useMacroContext';
+import { AnimationContext } from '../store/animationContext';
+import { MacroContext } from '../store/macroContext';
+import MainLayout from '../components/layout/MainLayout';
+import BlogLayout from '../components/layout/BlogLayout';
 
 function MyApp({ Component, pageProps }) {
   const macroCtx = useMacroContext();
@@ -16,13 +17,21 @@ function MyApp({ Component, pageProps }) {
   const router = useRouter();
 
   return (
-    <AnimationContext.Provider value={animationCtx}>
-      <MacroContext.Provider value={macroCtx}>
-        <LayoutManager>
-          <Component {...pageProps} key={router.pathname} />
-        </LayoutManager>
-      </MacroContext.Provider>
-    </AnimationContext.Provider>
+    <>
+      {!router.pathname.startsWith('/blog') ? (
+        <AnimationContext.Provider value={animationCtx}>
+          <MacroContext.Provider value={macroCtx}>
+            <MainLayout>
+              <Component {...pageProps} key={router.pathname} />
+            </MainLayout>
+          </MacroContext.Provider>
+        </AnimationContext.Provider>
+      ) : (
+        <BlogLayout>
+          <Component {...pageProps} />
+        </BlogLayout>
+      )}
+    </>
   );
 }
 

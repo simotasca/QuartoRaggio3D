@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { useContext, useEffect, useRef, useState } from 'react';
 import { Container, Nav, Navbar } from 'react-bootstrap';
-import styles from './menu.module.scss';
+import styles from './menumobile.module.scss';
 import { Primary } from './Span';
 import MyLink from './MyLink';
 import { MacroContext } from '../store/macroContext';
@@ -45,7 +45,8 @@ const menuItems = [
   { href: '/integrazione', text: 'integrazione' },
   { href: '/africa', text: 'progetti sviluppo' },
   { href: '/inclusione', text: 'inclusione culturale e religiosa' },
-  { href: '/comunita', text: 'comunita' }
+  { href: '/comunita', text: 'comunita' },
+  { href: '/blog', text: 'blogghe' }
 ];
 
 function SidePanel({ children, show, handleClose }) {

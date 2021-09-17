@@ -1,12 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { PAGE_TOGGLE_TIME_MS } from '../helpers/animationConfig';
-import { AnimationContext } from '../store/animationContext';
-import styles from './layoutmanager.module.scss';
-import MenuMobile from './MenuMobile';
-import SocialIcons from './SocialIcons';
-import ThreeScene from './three/ThreeScene';
+import { PAGE_TOGGLE_TIME_MS } from '../../helpers/animationConfig';
+import { AnimationContext } from '../../store/animationContext';
+import MenuMobile from '../MenuMobile';
+import SocialIcons from '../SocialIcons';
+import ThreeScene from '../three/ThreeScene';
+import styles from './mainlayout.module.scss';
 
-const LayoutManager = ({ children }) => {
+export default function MainLayout({ children }) {
   const { isAnimating, startAnimating } = useContext(AnimationContext);
   const [visible, setVisible] = useState(true);
   const [displayedChildren, setDisplayedChildren] = useState(null);
@@ -60,6 +60,4 @@ const LayoutManager = ({ children }) => {
       </div>
     </>
   );
-};
-
-export default LayoutManager;
+}
