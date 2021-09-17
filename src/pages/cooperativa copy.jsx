@@ -1,41 +1,41 @@
 import dynamic from 'next/dynamic';
-import { useContext, useEffect, useRef } from 'react';
+import { useCallback, useContext, useEffect, useRef } from 'react';
 import { Col, Row } from 'react-bootstrap';
+import { useInView } from 'react-intersection-observer';
 import CenterSection from '../components/CenterSection';
 import ChangingElement from '../components/ChangingElement';
 import ExpandibleTitle from '../components/ExpandibleTitle';
 import { Danger, Success } from '../components/Span';
 import { macros } from '../helpers/macros';
+import usePage from '../hooks/usePage';
+import CrowdFunding from '../components/sections/cooperativa/CrowdFunding';
+import Kosher from '../components/sections/cooperativa/Kosher';
+import Tortorella from '../components/sections/cooperativa/Tortorella';
 import { MacroContext } from '../store/macroContext';
 
-const CrowdFunding = dynamic(() => import('../components/sections/cooperativa/CrowdFunding'));
-const Kosher = dynamic(() => import('../components/sections/cooperativa/Kosher'));
-const Tortorella = dynamic(() => import('../components/sections/cooperativa/Tortorella'));
+// const WirelessPrepaid = loadWirelessBundle ? WirelessPrepaidDynamicComponent : () => null;
 
 const CooperativaPage = () => {
   const { setCurrentMacro } = useContext(MacroContext);
   useEffect(() => setCurrentMacro(macros.cooperativa), [setCurrentMacro]);
 
-  const ref = useRef();
+  const [expandibles, inView] = useInView({ threshold: 0.1, root: usePage() });
 
-  // gsap.registerPlugin(ScrollTrigger);
-  // useEffect(() => {
-  //   gsap.from('.muovimi', {
-  //     x: '-60%',
-  //     opacity: 0,
-  //     duration: 0.3,
-  //     scrollTrigger: {
-  //       scroller: usePage(),
-  //       trigger: ref.current,
-  //       //*markers: true,
-  //       start: 'top center',
-  //       end: 'bottom',
-  //       toggleActions: 'play reset'
-  //       //scrub: true
-  //     },
-  //     stagger: 0.15
-  //   });
-  // }, []);
+  // const sec1 = useRef();
+  const sec2 = useRef();
+  // useScrollSection([sec1, sec2], 500);
+
+  const lostilo = {
+    willChange: 'transform',
+    // opacity: inView ? 1 : 0,
+    transform: `translateX(${inView ? 0 : -100}%)`,
+    transitionTimingFunction: 'ease-out'
+  };
+
+  const comb = useCallback((c) => {
+    sec2.current = c;
+    expandibles(c);
+  });
 
   return (
     <>
@@ -46,7 +46,7 @@ const CooperativaPage = () => {
               Un&apos;associazione senza scopo di lucro, costituita per portare
               <span className="text-success"> solidarietà</span> sociale e un aiuto ai bisognosi
             </h1>
-            <ChangingElement
+            {/*<ChangingElement
               elements={[
                 <p key={0} className="text-secondary h2 text-end">
                   Portiamo avanti progetti <b className="text-dark">sociali</b>
@@ -58,32 +58,36 @@ const CooperativaPage = () => {
                   Instauriamo <b className="text-dark">collaborazioni</b> internazionali
                 </p>
               ]}
-            />
+            />*/}
           </Col>
         </Row>
       </CenterSection>
-      <CenterSection ref={ref}>
+
+      <CenterSection ref={comb}>
         <ExpandibleTitle
           title={
             <>
               Certificazione <Danger>Kosher</Danger>
             </>
-          }>
+          }
+          style={{ ...lostilo, transition: !inView ? '0s' : '.3s .0s' }}>
           <Row className="col ms-4 mt-3">
             <Kosher />
           </Row>
         </ExpandibleTitle>
-        <ExpandibleTitle
-          title={
-            <>
-              Crowd <Success>Funding</Success>
-            </>
-          }>
+        <ExpandibleTitle title={'Crowd Funding'} style={{ ...lostilo, transition: !inView ? '0s' : '.3s .1s' }}>
           <Row className="col ms-4 mt-3">
             <CrowdFunding />
           </Row>
         </ExpandibleTitle>
-        <ExpandibleTitle title={'I nostri Clienti'}>
+
+        <ExpandibleTitle
+          title={
+            <>
+              <Success>Olio</Success> Tortorella
+            </>
+          }
+          style={{ ...lostilo, transition: !inView ? '0s' : '.3s .2s' }}>
           <Row className="col ms-4 mt-3">
             <Tortorella />
           </Row>
