@@ -1,10 +1,8 @@
 import Image from 'next/image';
-import { useContext, useEffect, useRef, useState } from 'react';
-import { Container, Nav, Navbar } from 'react-bootstrap';
-import styles from './menumobile.module.scss';
-import { Primary } from './Span';
-import MyLink from './MyLink';
+import { Fragment, useContext, useEffect, useRef, useState } from 'react';
 import { MacroContext } from '../store/macroContext';
+import styles from './menumobile.module.scss';
+import MyLink from './MyLink';
 
 const Cap = ({ children, active }) => {
   const ref = useRef(null);
@@ -42,17 +40,30 @@ const menuItems = [
   { href: '/', text: 'home' },
   { href: '/cooperativa', text: 'cooperativa' },
   { href: '/integrazione', text: 'integrazione' },
-  { href: '/africa', text: 'progetti sviluppo' },
+  {
+    text: 'progetti sviluppo',
+    sub: [
+      { href: '/progetti', text: 'quarto Raggio' },
+      { href: '/bayesarew', text: 'bay Sa Rew' }
+    ]
+  },
   { href: '/inclusione', text: 'inclusione culturale e religiosa' },
-  { href: '/comunita', text: 'comunita' },
-  { href: '/blog', text: 'blogghe' }
+  { href: '/comunita', text: 'comunita' }
+  /*{
+    text: 'articoli',
+    sub: [
+      { href: '/blog/uno', text: 'sul cristianesimo' },
+      { href: '/blog/uno', text: "sull'induismo" },
+      { href: '/blog/uno', text: 'il vecchio e il nuovo' }
+    ]
+  }*/
 ];
 
 function SidePanel({ children, show, handleClose }) {
   return (
     <div className={[styles.offcanvas, !show ? styles.offcanvasHidden : '', 'd-lg-none'].join(' ')}>
       <div className="mt-3 mb-3">
-        <h4 className="bi bi-x-lg float-end me-2 secondary" onClick={handleClose} />
+        <h4 className="bi bi-x-lg float-end me-2 secondary pointer" onClick={handleClose} />
         <div className="mx-auto text-center">
           <Image src="/resources/Risorsa.svg" alt="No cap" height="50px" width="50px" />
         </div>
@@ -60,6 +71,80 @@ function SidePanel({ children, show, handleClose }) {
       <div>{children}</div>
     </div>
   );
+}
+
+function Item({ item, active }) {
+  if (item.sub) {
+    return (
+      <li className="nav-item mx-2 h6 dropdown">
+        <a className={[styles.wonderLeyen, active ? styles.wonderLeyenActv : ''].join(' ')} id="navbarDropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+          <b>
+            <Cap active={active}>{item.text}</Cap>
+          </b>
+        </a>
+        <ul
+          className="dropdown-menu dropdown-menu-end mt-3 p-0 rounded-2 border-start-0 border-end-0 border-2 border-dark"
+          style={{ background: 'rgb(230, 230, 230, .85)' }}
+          aria-labelledby="navbarDropdownMenuLink">
+          {item.sub.map((m, i) => (
+            <Fragment key={i}>
+              <li className="mx-3 my-3 text-nowrap">
+                <MyLink href={m.href}>
+                  <b>
+                    <Cap>{m.text}</Cap>
+                  </b>
+                </MyLink>
+              </li>
+              {i != item.sub.length - 1 && <hr className="m-0 mx-2" />}
+            </Fragment>
+          ))}
+        </ul>
+      </li>
+    );
+  } else
+    return (
+      <li className="nav-item mx-2 h6">
+        <MyLink href={item.href} className={[styles.wonderLeyen, active ? styles.wonderLeyenActv : ''].join(' ')}>
+          <b>
+            <Cap active={active}>{item.text}</Cap>
+          </b>
+        </MyLink>
+      </li>
+    );
+}
+
+function SideItem({ item, active, onClick }) {
+  if (!item.sub)
+    return (
+      <MyLink href={item.href} onClick={onClick} className="w-100">
+        <h4>
+          <b>
+            <Cap active={active}>{item.text}</Cap>
+          </b>
+        </h4>
+      </MyLink>
+    );
+  else
+    return (
+      <>
+        <h4 className="w-100" data-bs-toggle="collapse" href={'#sideCollapse' + item.href} role="button" aria-expanded="false" aria-controls="collapseExample">
+          <b>
+            <Cap active={active}>{item.text}</Cap>
+          </b>
+        </h4>
+        <div className="collapse" id={'sideCollapse' + item.href}>
+          {item.sub.map((sub, i) => (
+            <MyLink key={i} className="w-100" href={sub.href} onClick={onClick}>
+              <h4 className="ms-3">
+                <b>
+                  <Cap>{sub.text}</Cap>
+                </b>
+              </h4>
+            </MyLink>
+          ))}
+        </div>
+      </>
+    );
 }
 
 export default function MenuMobile() {
@@ -70,73 +155,34 @@ export default function MenuMobile() {
 
   return (
     <>
-      <Navbar className="p-0" expand="lg" aria-label="Main navigation">
-        <Container fluid>
-          <Navbar.Brand className="navbar-brand">
+      <nav className="navbar navbar-expand-lg p-0">
+        <div className="container-fluid">
+          <s className="navbar-brand">
             <Logo />
-          </Navbar.Brand>
+          </s>
           <div className="d-lg-none" style={{ transition: 'none' }} onClick={() => setShow(!show)}>
-            <Primary className="bi bi-stack" />
+            <span className="h3 bi bi-stack pointer" />
           </div>
-          <Navbar.Collapse hidden>
-            <Nav className="ms-auto mb-2 mb-lg-0">
+          <div className="collapse navbar-collapse">
+            <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
               {menuItems.map((m, i) => (
-                <Nav.Item key={i} className="mx-2 h6">
-                  <MyLink href={m.href} className={[styles.wonderLeyen, i == macro ? styles.wonderLeyenActv : ''].join(' ')}>
-                    <b>
-                      <Cap active={macro == i}>{m.text}</Cap>
-                    </b>
-                  </MyLink>
-                </Nav.Item>
+                <Item key={i} item={m} active={macro == i} />
               ))}
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
+            </ul>
+          </div>
+        </div>
+      </nav>
       <SidePanel show={show} handleClose={handleClose}>
         <div className="d-flex flex-column justify-content-around">
           {menuItems.map((m, i) => (
-            <>
-              <MyLink href={m.href} key={i} onClick={handleClose}>
-                <h4>
-                  <b>
-                    <Cap active={macro == i}>{m.text}</Cap>
-                  </b>
-                </h4>
-              </MyLink>
-              {i != menuItems.length ? <hr /> : ''}
-            </>
+            <Fragment key={i}>
+              <SideItem item={m} active={macro == i} onClick={handleClose} />
+              {i != menuItems.length && <hr />}
+            </Fragment>
           ))}
         </div>
       </SidePanel>
-      {/*<div className={[styles.offcanvasBlur, ''].join(' ')} style={show ? {} : { opacity: '0', zIndex: '-1' }} onClick={handleClose} />*/}
+      {/*<div className={[styles.offcanvasBlur, !show ? styles.offcanvasBlurHidden : ''].join(' ')} onClick={handleClose} />*/}
     </>
   );
 }
-
-/**
- * https://stackoverflow.com/questions/51803259/react-app-css-transitions-are-very-slow
- */
-
-/*
-  <Offcanvas show={show} onHide={handleClose}>
-      <Offcanvas.Header closeButton>
-        <div className="mx-auto">
-         <Image src="/resources/Risorsa.svg" alt="No cap" height="50px" width="50px" />
-        </div>
-      </Offcanvas.Header>
-      <Offcanvas.Body className="py-auto">
-       <div className="d-flex flex-column justify-content-around">
-        {menuItems.map((m, i) => (<>
-          <MyLink href={m.href} key={i} onClick={handleClose}>
-            <h4><b>
-                {m.text}
-            </b></h4>
-          </MyLink>
-          {i!=menuItems.length?<hr/>:""}
-        </>))}
-
-       </div>
-      </Offcanvas.Body>
-    </Offcanvas>
-*/

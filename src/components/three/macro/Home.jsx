@@ -7,7 +7,7 @@ export default function Home(props) {
   return (
     <group position={props.position}>
       <Gltf url={'/models/HOME.gltf'} setLoaded={setLoaded} />
-      {/*loaded && <Fire position={[0, 34, 3]} />*/}
+      {loaded && <Fire position={[0, 34, 3]} />}
     </group>
   );
 }

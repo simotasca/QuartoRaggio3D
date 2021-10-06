@@ -23,7 +23,6 @@ function ExpandibleTitle({ children, title, isOpen, duration, style = {} }) {
         </div>
         <span className={`h1 float-end bi ${open ? 'bi-chevron-compact-up' : 'bi-chevron-compact-down'}`}></span>
       </div>
-
       <div
         style={{
           overflow: 'hidden',
@@ -38,7 +37,6 @@ function ExpandibleTitle({ children, title, isOpen, duration, style = {} }) {
           </div>
         </div>
       </div>
-
       <hr />
     </div>
   );

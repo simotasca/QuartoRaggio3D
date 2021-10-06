@@ -1,6 +1,5 @@
 import dynamic from 'next/dynamic';
 import { useContext, useEffect, useRef } from 'react';
-import { Col, Row } from 'react-bootstrap';
 import CenterSection from '../components/CenterSection';
 import ChangingElement from '../components/ChangingElement';
 import ExpandibleTitle from '../components/ExpandibleTitle';
@@ -40,8 +39,8 @@ const CooperativaPage = () => {
   return (
     <>
       <CenterSection>
-        <Row className="mb-5">
-          <Col xs={12} className="mb-5">
+        <div className="row mb-5">
+          <div className="col-12 mb-5">
             <h1 className="mb-3">
               Un&apos;associazione senza scopo di lucro, costituita per portare
               <span className="text-success"> solidarietà</span> sociale e un aiuto ai bisognosi
@@ -59,8 +58,8 @@ const CooperativaPage = () => {
                 </p>
               ]}
             />
-          </Col>
-        </Row>
+          </div>
+        </div>
       </CenterSection>
       <CenterSection ref={ref}>
         <ExpandibleTitle
@@ -69,9 +68,9 @@ const CooperativaPage = () => {
               Certificazione <Danger>Kosher</Danger>
             </>
           }>
-          <Row className="col ms-4 mt-3">
+          <div className="row col ms-4 mt-3">
             <Kosher />
-          </Row>
+          </div>
         </ExpandibleTitle>
         <ExpandibleTitle
           title={
@@ -79,14 +78,14 @@ const CooperativaPage = () => {
               Crowd <Success>Funding</Success>
             </>
           }>
-          <Row className="col ms-4 mt-3">
+          <div className="row col ms-4 mt-3">
             <CrowdFunding />
-          </Row>
+          </div>
         </ExpandibleTitle>
         <ExpandibleTitle title={'I nostri Clienti'}>
-          <Row className="col ms-4 mt-3">
+          <div className="row col ms-4 mt-3">
             <Tortorella />
-          </Row>
+          </div>
         </ExpandibleTitle>
       </CenterSection>
     </>

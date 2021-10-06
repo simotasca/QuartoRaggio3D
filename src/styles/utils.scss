@@ -1,4 +1,4 @@
-@import "globals.scss";
+@import 'globals.scss';
 
 .primary {
   color: $color-primary;
@@ -29,4 +29,8 @@
 /* Hide scrollbar for Chrome, Safari and Opera */
 .hideScrollbar::-webkit-scrollbar {
   display: none;
+}
+
+.pointer {
+  cursor: pointer;
 }

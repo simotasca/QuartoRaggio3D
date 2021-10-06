@@ -10,29 +10,36 @@ import { AnimationContext } from '../store/animationContext';
 import { MacroContext } from '../store/macroContext';
 import MainLayout from '../components/layout/MainLayout';
 import BlogLayout from '../components/layout/BlogLayout';
+import { useEffect } from 'react';
 
 function MyApp({ Component, pageProps }) {
+  useEffect(() => {
+    typeof document !== undefined ? require('bootstrap/dist/js/bootstrap') : null;
+  }, []);
+
   const macroCtx = useMacroContext();
   const animationCtx = useAnimationContext();
   const router = useRouter();
 
-  return (
-    <>
-      {!router.pathname.startsWith('/blog') ? (
-        <AnimationContext.Provider value={animationCtx}>
-          <MacroContext.Provider value={macroCtx}>
-            <MainLayout>
-              <Component {...pageProps} key={router.pathname} />
-            </MainLayout>
-          </MacroContext.Provider>
-        </AnimationContext.Provider>
-      ) : (
-        <BlogLayout>
-          <Component {...pageProps} />
-        </BlogLayout>
-      )}
-    </>
-  );
+  if (router.pathname.startsWith('/blog')) {
+    return (
+      <BlogLayout>
+        <Component {...pageProps} />
+      </BlogLayout>
+    );
+  } else if (router.pathname.startsWith('/bayesarew/')) {
+    return <Component {...pageProps} />;
+  } else {
+    return (
+      <AnimationContext.Provider value={animationCtx}>
+        <MacroContext.Provider value={macroCtx}>
+          <MainLayout>
+            <Component {...pageProps} key={router.pathname} />
+          </MainLayout>
+        </MacroContext.Provider>
+      </AnimationContext.Provider>
+    );
+  }
 }
 
 export default MyApp;

@@ -25,25 +25,19 @@ const CrowdFunding = () => (
           <Success>Supportaci</Success>
         </h4>
         <p>Contribuisci e partecipa attivamente alla loro realizzazione, come volontario o come donatore.</p>
-        <Button>
-          <MyLink href={'/africa'}>Dona</MyLink>
-        </Button>
+        <MyLink className="btn btn-success text-light">Dona</MyLink>
       </div>
       <div className="col mt-4">
         <h4 className="card-title">Collabora</h4>
         <p className="card-text">Collabora alla diffuzione culturale come bene comune tra gli uomini.</p>
-        <Button>
-          <MyLink href={'/africa'}>Scopri</MyLink>
-        </Button>
+        <MyLink className="btn btn-success text-light">Scopri</MyLink>
       </div>
       <div className="col mt-4">
         <h4 className="card-title">
           Proponi la tua <Danger>iniziativa</Danger>
         </h4>
         <p className="card-text">Se in linea con le nostre idee e praticamente realizzabile, noi ti aiuteremo.</p>
-        <Button>
-          <MyLink href={'/africa'}>Scopri</MyLink>
-        </Button>
+        <MyLink className="btn btn-success text-light">Scopri</MyLink>
       </div>
     </div>
   </>

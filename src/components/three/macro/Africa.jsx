@@ -7,7 +7,7 @@ export default function Africa(props) {
   return (
     <group position={props.position}>
       <Gltf url={'/models/AFRICA.gltf'} setLoaded={setLoaded} />
-      {/*loaded && <Fire position={[23, 24, 36]} />*/}
+      {loaded && <Fire position={[23, 24, 36]} />}
     </group>
   );
 }

@@ -1,6 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=MuseoModerno:wght@400&display=swap');
 @import 'globals.scss';
 
+html,
+body,
+body,
+div#__next {
+  // fix next container height
+  height: 100%;
+}
+
 body {
   font-family: 'MuseoModerno';
   color: $color-primary;
@@ -11,8 +19,4 @@ body {
     color: inherit;
   }
   -webkit-overflow-scrolling: auto;
-}
-
-.pointer {
-  cursor: pointer;
 }

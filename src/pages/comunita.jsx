@@ -1,9 +1,9 @@
-import { useContext, useEffect } from "react";
-import MailForm from "../components/MailForm";
-import { macros } from "../helpers/macros";
-import { MacroContext, } from "../store/macroContext";
+import { useContext, useEffect } from 'react';
+import MailForm from '../components/MailForm';
+import { macros } from '../helpers/macros';
+import { MacroContext } from '../store/macroContext';
 
-const AboutPage = () => {
+const Comunita = () => {
   const { setCurrentMacro } = useContext(MacroContext);
   useEffect(() => setCurrentMacro(macros.comunita), [setCurrentMacro]);
 
@@ -14,10 +14,8 @@ const AboutPage = () => {
           Unisciti alla <span className="warning">Comunità</span>
         </h1>
         <p className="secondary">
-          E&apos; una comunità aperta a tutti: Se avete scelto di far parte di questa
-          comunità collaborerete nel lavoro di gruppo. Aiutaci a realizzare
-          progetti di solidarietà sociale, unendoti alla nostra community,
-          oppure proponici nuove iniziative
+          E&apos; una comunità aperta a tutti: Se avete scelto di far parte di questa comunità collaborerete nel lavoro di gruppo. Aiutaci a realizzare progetti di
+          solidarietà sociale, unendoti alla nostra community, oppure proponici nuove iniziative
         </p>
       </div>
 
@@ -25,8 +23,7 @@ const AboutPage = () => {
 
       <div className="row my-5">
         <h3>
-          <span className="">Contatti - </span> Quarto{" "}
-          <span className="success">Raggio</span>
+          <span className="">Contatti - </span> Quarto <span className="success">Raggio</span>
         </h3>
         <p className="h5">
           <b>Email: </b>consulti.quarto.raggio@gmail.com
@@ -66,4 +63,4 @@ const AboutPage = () => {
   );
 };
 
-export default AboutPage;
+export default Comunita;

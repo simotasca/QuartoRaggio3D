@@ -1,8 +1,71 @@
 // @import "bootstrap";
-$primary: rgb(60, 56, 187);
+// $primary: rgb(60, 56, 187);
 //$secondary: #ff00ff;
 $success: rgb(113, 183, 57);
 $danger: rgb(204, 21, 23);
+$dark: rgb(30, 29, 60);
 // $warning: $purple-500;
-@import "bootstrap";
+
+$enable-negative-margins: true;
+
+@import 'bootstrap/scss/functions';
+@import 'bootstrap/scss/variables';
+@import 'bootstrap/scss/utilities';
+@import 'bootstrap/scss/mixins';
+
+$utilities: map-merge(
+  $utilities,
+  (
+    'width':
+      map-merge(
+        map-get($utilities, 'width'),
+        (
+          values:
+            map-merge(
+              map-get(map-get($utilities, 'width'), 'values'),
+              (
+                10: 10%
+              )
+            )
+        )
+      )
+  )
+);
+
+// per aggiungere breakpoint a width
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @each $size, $length in map-get(map-get($utilities, 'width'), 'values') {
+    @include media-breakpoint-up($breakpoint) {
+      .w-#{$breakpoint}-#{$size} {
+        width: $length !important;
+      }
+    }
+  }
+}
+
+@import 'bootstrap';
 /* finally, import Bootstrap */
+
+// qui sotto override class
+.btn-success {
+  background: darken($success, 10);
+  border-color: darken($success, 8);
+
+  &:hover {
+    background: $success;
+  }
+}
+
+.btn-danger {
+  background: rgb(138, 23, 7);
+  border-color: lighten(rgb(95, 19, 9), 2);
+
+  &:hover {
+    background: $danger;
+  }
+}
+
+.btn {
+  border-radius: 0;
+  letter-spacing: 2px;
+}
