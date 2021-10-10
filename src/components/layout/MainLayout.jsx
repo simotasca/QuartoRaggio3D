@@ -18,7 +18,6 @@ export default function MainLayout({ children }) {
   //#region animation
   const { isAnimating, startAnimating } = animationCtx;
   const [displayedChildren, setDisplayedChildren] = useState(null);
-  const [isVisible, setVisible] = useState(true);
 
   useEffect(() => {
     if (displayedChildren == null) {
@@ -37,7 +36,7 @@ export default function MainLayout({ children }) {
 
       return () => clearTimeout(timer);
     }
-  }, [children]);
+  }, [children, displayedChildren, startAnimating]);
 
   //#endregion
 

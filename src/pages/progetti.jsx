@@ -45,14 +45,14 @@ const Progetti = () => {
           </div>
           <div className="row mt-2 justify-content-end d-flex flex-wrap align-items-center">
             <div className="d-block d-md-none col-12 text-center ">
-              <Image src={bsrImg} className="img-fluid shadow rounded" />
+              <Image src={bsrImg} className="img-fluid shadow rounded" alt="image not found" />
             </div>
             <div className="col-xl-6 col-md-9 mt-4">
               <p>Sede di una comunità senegalese, necessita di supporto per aumentare la produttività e migliorare la qualità della vita dei suoi abitanti.</p>
               <MyLink className="btn btn-success text-light">Per sapene di più</MyLink>
             </div>
             <div className="d-none d-md-block col-3 text-center">
-              <Image src={bsrImg} className="img-fluid shadow rounded" />
+              <Image src={bsrImg} className="img-fluid shadow rounded" alt="image not found" />
             </div>
           </div>
         </div>

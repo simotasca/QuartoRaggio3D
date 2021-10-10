@@ -1,4 +1,4 @@
-export default function (req, res) {
+export default function Kosher(req, res) {
   // yarn add dotenv
   // require('dotenv').config()
 

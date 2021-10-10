@@ -8,7 +8,7 @@ function ExpandibleTitle({ children, title, isOpen, duration, style = {} }) {
 
   useLayoutEffect(() => {
     setHeight(collapse.current.clientHeight);
-  });
+  }, []);
 
   const size = useWindowSize();
   useEffect(() => {

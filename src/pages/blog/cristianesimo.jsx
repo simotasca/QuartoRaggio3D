@@ -1,9 +1,9 @@
-import MenuMobile from '../../components/MenuMobile';
+import Menu from '../../components/Menu';
 
 export default function Blog1() {
   return (
     <div className="">
-      <MenuMobile />
+      <Menu />
       <div
         style={{
           width: '100%',
@@ -15,7 +15,7 @@ export default function Blog1() {
         }}
       />
       <div className="container bg-light p-3 mt-sm-n5">
-        <h1>L'origine del cristianesimo</h1>
+        <h1>L`&apos;`origine del cristianesimo</h1>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam facilisis a ipsum quis interdum. Sed lacus odio, facilisis vitae lorem at, commodo ultricies
           odio. Proin porta, felis at venenatis posuere, turpis justo ultricies metus, in vestibulum est elit ac tellus. Aliquam mauris ante, tristique in ipsum id,

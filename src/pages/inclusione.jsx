@@ -2,12 +2,13 @@ import { useContext, useEffect, useLayoutEffect } from 'react';
 import { macros } from '../helpers/macros';
 import { MacroContext } from '../store/macroContext';
 import { Success } from '../components/Span';
-import MyLink from '../components/MyLink';
+import Image from 'next/image';
+import cristianesimoImg from '../../public/resources/articles/cristianesimo.jpg';
 
 function Article() {
   return (
     <a className="col text-center" href="blog/cristianesimo">
-      <img className="img-fluid " src="/resources/articles/cristianesimo.jpg" alt="..." />
+      <Image className="img-fluid " src={cristianesimoImg} alt="..." />
       <div className="pt-2">
         <h5>
           <b>Introduzione al Cristianesimo</b>
@@ -29,7 +30,7 @@ const InclusionePage = () => {
         </h1>
         <hr />
         <h5>
-          Uno dei moventi fondamentali del gruppo Quarto Raggio è la promozione dell'ideale di fratellanza.
+          Uno dei moventi fondamentali del gruppo Quarto Raggio è la promozione dell`&apos;`ideale di fratellanza.
           <br />I nostri articoli non vogliono essere mezzi per la diffusione di informazioni, bensì utilizzare queste come pretesto per trasmettere un significato
           fondamentale.
         </h5>

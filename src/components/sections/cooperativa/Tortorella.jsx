@@ -1,6 +1,23 @@
 import { Carousel, Col, Row } from 'react-bootstrap';
 import Button from '../../buttons/Button';
-import { Danger, Secondary, Success } from '../../Span';
+import { Danger, Success } from '../../Span';
+import Image from 'next/image';
+import ofra from '../../../../public/resources/tortorella/ofra.png';
+import ofra_tappo from '../../../../public/resources/tortorella/ofra_tappo.jpg';
+import ofra_zoom from '../../../../public/resources/tortorella/ofra_zoom.png';
+import due from '../../../../public/resources/tortorella/due.jpg';
+import blend from '../../../../public/resources/tortorella/blend.png';
+import blend_zoom from '../../../../public/resources/tortorella/blend_zoom.jpg';
+import blend_tappo from '../../../../public/resources/tortorella/blend_tappo.jpg';
+
+import bibenda from '../../../../public/resources/tortorella/premi/bibenda.jpg';
+import gamberoRosso from '../../../../public/resources/tortorella/premi/gambero-rosso.jpg';
+import extraBio from '../../../../public/resources/tortorella/premi/extrabio.jpg';
+import flosOlei from '../../../../public/resources/tortorella/premi/flos-olei.png';
+import oscarGreen from '../../../../public/resources/tortorella/premi/oscar-green.jpg';
+import sirenaDoro from '../../../../public/resources/tortorella/premi/sirena-doro.jpg';
+import slowOlive from '../../../../public/resources/tortorella/premi/slow-olive.jpg';
+import slowFood from '../../../../public/resources/tortorella/premi/slow-food.jpg';
 
 const Tortorella = () => (
   <>
@@ -8,41 +25,41 @@ const Tortorella = () => (
       <h3>
         Supportiamo il made in <Danger>Italy.</Danger>
       </h3>
-      <h5>Il nostro interesse è rivolto specialmente alle piccole imprese sul territorio nazionale, per promuovere l'eccellenza locale.</h5>
+      <h5>Il nostro interesse è rivolto specialmente alle piccole imprese sul territorio nazionale, per promuovere l`&apos;`eccellenza locale.</h5>
       <Row className="mt-5">
         <Col md={12} lg={5} xl={4} className="d-flex flex-column justify-content-center">
           <Carousel indicators={false}>
             <Carousel.Item>
-              <img className="d-block w-100" src="resources/tortorella/ofra.png" alt="1 slide" />
+              <Image className="d-block w-100" src={ofra} alt="1 slide" />
             </Carousel.Item>
             <Carousel.Item>
-              <img className="d-block w-100" src="resources/tortorella/ofra_tappo.jpg" alt="2 slide" />
+              <Image className="d-block w-100" src={ofra_tappo} alt="2 slide" />
             </Carousel.Item>
             <Carousel.Item>
-              <img className="d-block w-100" src="resources/tortorella/ofra_zoom.png" alt="3 slide" />
+              <Image className="d-block w-100" src={ofra_zoom} alt="3 slide" />
             </Carousel.Item>
             <Carousel.Item>
-              <img className="d-block w-100" src="resources/tortorella/due.jpg" alt="4 slide" />
+              <Image className="d-block w-100" src={due} alt="4 slide" />
             </Carousel.Item>
             <Carousel.Item>
-              <img className="d-block w-100" src="resources/tortorella/blend.png" alt="5 slide" />
+              <Image className="d-block w-100" src={blend} alt="5 slide" />
             </Carousel.Item>
             <Carousel.Item>
-              <img className="d-block w-100" src="resources/tortorella/blend_zoom.jpg" alt="6 slide" />
+              <Image className="d-block w-100" src={blend_zoom} alt="6 slide" />
             </Carousel.Item>
             <Carousel.Item>
-              <img className="d-block w-100" src="resources/tortorella/blend_tappo.jpg" alt="7 slide" />
+              <Image className="d-block w-100" src={blend_tappo} alt="7 slide" />
             </Carousel.Item>
           </Carousel>
           <div className="w-100 h-auto">
-            <img className="d-inline mt-2" style={{ width: 93 / 8 + '%', marginRight: '1%' }} src="resources/tortorella/premi/bibenda.jpg" alt="no img" />
-            <img className="d-inline mt-2" style={{ width: 93 / 8 + '%', marginRight: '1%' }} src="resources/tortorella/premi/gambero-rosso.jpg" alt="no img" />
-            <img className="d-inline mt-2" style={{ width: 93 / 8 + '%', marginRight: '1%' }} src="resources/tortorella/premi/extrabio.jpg" alt="no img" />
-            <img className="d-inline mt-2" style={{ width: 93 / 8 + '%', marginRight: '1%' }} src="resources/tortorella/premi/flos-olei.png" alt="no img" />
-            <img className="d-inline mt-2" style={{ width: 93 / 8 + '%', marginRight: '1%' }} src="resources/tortorella/premi/oscar-green.jpg" alt="no img" />
-            <img className="d-inline mt-2" style={{ width: 93 / 8 + '%', marginRight: '1%' }} src="resources/tortorella/premi/sirena-doro.jpg" alt="no img" />
-            <img className="d-inline mt-2" style={{ width: 93 / 8 + '%', marginRight: '1%' }} src="resources/tortorella/premi/slow-olive.jpg" alt="no img" />
-            <img className="d-inline mt-2" style={{ width: 93 / 8 + '%' }} src="resources/tortorella/premi/slow-food.jpg" alt="no img" />
+            <Image className="d-inline mt-2" style={{ width: 93 / 8 + '%', marginRight: '1%' }} src={bibenda} alt="no img" />
+            <Image className="d-inline mt-2" style={{ width: 93 / 8 + '%', marginRight: '1%' }} src={gamberoRosso} alt="no img" />
+            <Image className="d-inline mt-2" style={{ width: 93 / 8 + '%', marginRight: '1%' }} src={extraBio} alt="no img" />
+            <Image className="d-inline mt-2" style={{ width: 93 / 8 + '%', marginRight: '1%' }} src={flosOlei} alt="no img" />
+            <Image className="d-inline mt-2" style={{ width: 93 / 8 + '%', marginRight: '1%' }} src={oscarGreen} alt="no img" />
+            <Image className="d-inline mt-2" style={{ width: 93 / 8 + '%', marginRight: '1%' }} src={sirenaDoro} alt="no img" />
+            <Image className="d-inline mt-2" style={{ width: 93 / 8 + '%', marginRight: '1%' }} src={slowOlive} alt="no img" />
+            <Image className="d-inline mt-2" style={{ width: 93 / 8 + '%' }} src={slowFood} alt="no img" />
           </div>
         </Col>
         <Col md={12} lg={7} xl={8} className="d-flex flex-column justify-content-center">

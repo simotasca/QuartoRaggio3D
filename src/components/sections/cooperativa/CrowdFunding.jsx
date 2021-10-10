@@ -1,3 +1,5 @@
+import Image from 'next/image';
+import fundingImg from '../../../../public/resources/funding.jpg';
 import Button from '../../buttons/Button';
 import MyLink from '../../MyLink';
 import { Danger, Success } from '../../Span';
@@ -6,7 +8,7 @@ const CrowdFunding = () => (
   <>
     <div className="row mt-5">
       <div className="col-lg-4 my-auto px-5 px-lg-0 px-xl-3">
-        <img className="img-fluid mb-2" src="/resources/funding.jpg" alt="..." />
+        <Image className="img-fluid mb-2" src={fundingImg} alt="..." />
       </div>
       <div className="col my-auto px-5 px-lg-2">
         <h3 className="text-center">
