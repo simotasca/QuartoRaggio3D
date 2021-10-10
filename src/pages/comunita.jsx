@@ -1,6 +1,7 @@
 import { useContext, useEffect } from 'react';
 import MailForm from '../components/MailForm';
 import { macros } from '../helpers/macros';
+import useMacroContext from '../hooks/store/useMacroContext';
 import { MacroContext } from '../store/macroContext';
 
 const Comunita = () => {

@@ -36,7 +36,7 @@ const InclusionePage = () => {
         <span>Potentemente.</span>
       </div>
 
-      <div class="row row-cols-2 row-cols-md-2 row-cols-xl-3 g-4 mt-5">
+      <div className="row row-cols-2 row-cols-md-2 row-cols-xl-3 g-4 mt-5">
         <Article />
         <Article />
         <Article />

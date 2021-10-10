@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { Fragment, useContext, useEffect, useRef, useState } from 'react';
 import { MacroContext } from '../store/macroContext';
-import styles from './menumobile.module.scss';
+import styles from './menu.module.scss';
 import MyLink from './MyLink';
 
 const Cap = ({ children, active }) => {
@@ -49,14 +49,6 @@ const menuItems = [
   },
   { href: '/inclusione', text: 'inclusione culturale e religiosa' },
   { href: '/comunita', text: 'comunita' }
-  /*{
-    text: 'articoli',
-    sub: [
-      { href: '/blog/uno', text: 'sul cristianesimo' },
-      { href: '/blog/uno', text: "sull'induismo" },
-      { href: '/blog/uno', text: 'il vecchio e il nuovo' }
-    ]
-  }*/
 ];
 
 function SidePanel({ children, show, handleClose }) {
@@ -76,7 +68,7 @@ function SidePanel({ children, show, handleClose }) {
 function Item({ item, active }) {
   if (item.sub) {
     return (
-      <li className="nav-item mx-2 h6 dropdown">
+      <li className="nav-item mx-2 h6 dropdown pointer">
         <a className={[styles.wonderLeyen, active ? styles.wonderLeyenActv : ''].join(' ')} id="navbarDropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
           <b>
             <Cap active={active}>{item.text}</Cap>

@@ -1,0 +1,10 @@
+$page-toggle-duration-ms: 500;
+$page-toggle-duration: 0 + $page-toggle-duration-ms;
+
+$macro-change-duration-ms: 1500;
+$macro-change-duration: 0 + $macro-change-duration-ms;
+
+:export {
+  pageToggleDurationMs: $page-toggle-duration-ms;
+  macroChangeDurationMs: $macro-change-duration-ms;
+}

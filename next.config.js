@@ -9,7 +9,7 @@ module.exports = {
         source: '/bayesarew',
         destination: '/bayesarew/home',
         permanent: true,
-      },
+      }
     ]
   }
 }
