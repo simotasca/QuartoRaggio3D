@@ -1,22 +1,8 @@
-import { useContext, useEffect, useLayoutEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import { macros } from '../helpers/macros';
 import { MacroContext } from '../store/macroContext';
 import { Success } from '../components/Span';
-import Image from 'next/image';
-import cristianesimoImg from '../../public/resources/articles/cristianesimo.jpg';
-
-function Article() {
-  return (
-    <a className="col text-center" href="blog/cristianesimo">
-      <Image className="img-fluid " src={cristianesimoImg} alt="..." />
-      <div className="pt-2">
-        <h5>
-          <b>Introduzione al Cristianesimo</b>
-        </h5>
-      </div>
-    </a>
-  );
-}
+import NextImage from '../components/NextImage';
 
 const InclusionePage = () => {
   const { setCurrentMacro } = useContext(MacroContext);
@@ -37,12 +23,23 @@ const InclusionePage = () => {
         <span>Potentemente.</span>
       </div>
 
-      <div className="row row-cols-2 row-cols-md-2 row-cols-xl-3 g-4 mt-5">
-        <Article />
-        <Article />
-        <Article />
-        <Article />
-        <Article />
+      <div className="row row-cols-2 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 gap-3 mt-5">
+        <a className="col" href="blog/cristianesimo">
+          <div className="card p-2">
+            <NextImage src={'/resources/articles/cristianesimo.jpg'} width={172} height={276} />
+            <h4 className="m-1 ps-3">
+              <b>Introduzione Cristianesimo</b>
+            </h4>
+          </div>
+        </a>
+        <a className="col" href="blog/cristianesimo">
+          <div className="card p-2">
+            <NextImage src={'/resources/articles/ebraismo.jpg'} width={170} height={275} />
+            <h4 className="m-1 ps-3">
+              <b>Introduzione Ebraismo</b>
+            </h4>
+          </div>
+        </a>
       </div>
     </div>
   );

@@ -3,13 +3,16 @@ import { useContext, useEffect, useRef } from 'react';
 import CenterSection from '../components/CenterSection';
 import ChangingElement from '../components/ChangingElement';
 import ExpandibleTitle from '../components/ExpandibleTitle';
+import CrowdFunding from '../components/sections/cooperativa/CrowdFunding';
+import Kosher from '../components/sections/cooperativa/Kosher';
+import Tortorella from '../components/sections/cooperativa/Tortorella';
 import { Danger, Success } from '../components/Span';
 import { macros } from '../helpers/macros';
 import { MacroContext } from '../store/macroContext';
 
-const CrowdFunding = dynamic(() => import('../components/sections/cooperativa/CrowdFunding'));
-const Kosher = dynamic(() => import('../components/sections/cooperativa/Kosher'));
-const Tortorella = dynamic(() => import('../components/sections/cooperativa/Tortorella'));
+// const CrowdFunding = dynamic(() => import('../components/sections/cooperativa/CrowdFunding'));
+// const Kosher = dynamic(() => import('../components/sections/cooperativa/Kosher'));
+// const Tortorella = dynamic(() => import('../components/sections/cooperativa/Tortorella'));
 
 const CooperativaPage = () => {
   const { setCurrentMacro } = useContext(MacroContext);

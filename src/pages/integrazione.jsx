@@ -10,7 +10,7 @@ const IntegrazionePage = () => {
 
   return (
     <CenterSection>
-      <div className="text-center mb-5 pb-5">
+      <div className="text-center mb-5 p-5 rounded-3 shadow-lg" style={{ background: 'rgba(255,255,255,.5)' }}>
         <h1 className="display-4" style={{ fontWeight: 'bold' }}>
           <Success>Integrazione</Success> Sociale
         </h1>

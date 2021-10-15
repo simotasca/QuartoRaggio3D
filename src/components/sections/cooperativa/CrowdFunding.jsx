@@ -1,16 +1,15 @@
-import Image from 'next/image';
-import fundingImg from '../../../../public/resources/funding.jpg';
 import Button from '../../buttons/Button';
 import MyLink from '../../MyLink';
+import NextImage from '../../NextImage';
 import { Danger, Success } from '../../Span';
 
 const CrowdFunding = () => (
   <>
     <div className="row mt-5">
-      <div className="col-lg-4 my-auto px-5 px-lg-0 px-xl-3">
-        <Image className="img-fluid mb-2" src={fundingImg} alt="..." />
+      <div className="col-lg-4 my-auto px-xl-3">
+        <NextImage src={'/resources/funding.jpg'} width={535} height={400} />
       </div>
-      <div className="col my-auto px-5 px-lg-2">
+      <div className="col my-auto px-2">
         <h3 className="text-center">
           Tutti i ricavati della cooperativa saranno devoluti alla realizzazione di opere <Success>umanitarie</Success>
         </h3>

@@ -7,6 +7,7 @@ import Image from 'next/image';
 import bsrImg from '../../public/resources/logoBSR.png';
 import { Success } from '../components/Span';
 import MyLink from '../components/MyLink';
+import NextImage from '../components/NextImage';
 
 const Progetti = () => {
   const { setCurrentMacro } = useContext(MacroContext);
@@ -45,14 +46,14 @@ const Progetti = () => {
           </div>
           <div className="row mt-2 justify-content-end d-flex flex-wrap align-items-center">
             <div className="d-block d-md-none col-12 text-center ">
-              <Image src={bsrImg} className="img-fluid shadow rounded" alt="image not found" />
+              <NextImage className="img-fluid shadow rounded" src={'/resources/logoBSR.png'} width={311} height={297} />
             </div>
             <div className="col-xl-6 col-md-9 mt-4">
               <p>Sede di una comunità senegalese, necessita di supporto per aumentare la produttività e migliorare la qualità della vita dei suoi abitanti.</p>
               <MyLink className="btn btn-success text-light">Per sapene di più</MyLink>
             </div>
-            <div className="d-none d-md-block col-3 text-center">
-              <Image src={bsrImg} className="img-fluid shadow rounded" alt="image not found" />
+            <div className="col-3 d-none d-md-block text-center">
+              <NextImage className="img-fluid shadow rounded" src={'/resources/logoBSR.png'} width={311} height={297} />
             </div>
           </div>
         </div>

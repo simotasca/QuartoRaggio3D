@@ -1,19 +1,30 @@
-import { useState } from "react";
-import Button from "./buttons/Button";
+import { useState } from 'react';
+import Button from './buttons/Button';
+import { Danger } from './Span';
 
 const MailForm = () => {
-  const [name, setName] = useState("");
+  const [name, setName] = useState('');
   const [nameError, setNameError] = useState(null);
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
+  const [email, setEmail] = useState('');
+  const [mailError, setMailError] = useState(null);
+  const [message, setMessage] = useState('');
+  const [messageError, setMessageError] = useState(null);
   const [submitted, setSubmitted] = useState(false);
 
   // check submitted to display message then turn it off to hide message
   // validation
   const validate = (data) => {
     let pass = true;
-    if (data.name == "") {
-      setNameError("Il campo nome è obbligatorio");
+    if (data.name == '') {
+      setNameError('Il campo nome è obbligatorio');
+      pass = false;
+    }
+    if (data.email == '') {
+      setMailError('Il campo email è obbligatorio');
+      pass = false;
+    }
+    if (data.message == '') {
+      setMessageError('Inserire un messaggio');
       pass = false;
     }
 
@@ -26,22 +37,25 @@ const MailForm = () => {
     let data = { name, email, message };
 
     setNameError(null);
+    setMailError(null);
+    setMessageError(null);
+
     if (validate(data)) {
-      fetch("/api/contact", {
-        method: "POST",
+      fetch('/api/contact', {
+        method: 'POST',
         headers: {
-          Accept: "application/json, text/plain, */*",
-          "Content-Type": "application/json",
+          Accept: 'application/json, text/plain, */*',
+          'Content-Type': 'application/json'
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify(data)
       }).then((res) => {
-        console.log("Response received");
+        console.log('Response received');
         if (res.status === 200) {
-          console.log("Response succeeded!");
+          console.log('Response succeeded!');
           setSubmitted(true);
-          setName("");
-          setEmail("");
-          setMessage("");
+          setName('');
+          setEmail('');
+          setMessage('');
         }
       });
     }
@@ -51,8 +65,8 @@ const MailForm = () => {
     <>
       <div className="row">
         <h3>Scrivici</h3>
-        <div className="col-12 col-xl-10">
-          <div className="input-group mb-3 border border-dark border-2">
+        <div className="col-12 col-xl-10 mt-3">
+          <div className="input-group border border-dark border-2">
             <span className="input-group-text shadow" id="basic-addon1">
               Nome:
             </span>
@@ -64,11 +78,11 @@ const MailForm = () => {
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
-            <p className="warning">{nameError}</p>
           </div>
+          <Danger>{nameError}</Danger>
         </div>
-        <div className="col-12 col-xl-10">
-          <div className="input-group mb-3 border border-dark border-2">
+        <div className="col-12 col-xl-10 mt-3">
+          <div className="input-group border border-dark border-2">
             <span className="input-group-text shadow" id="basic-addon1">
               eMail:
             </span>
@@ -81,14 +95,15 @@ const MailForm = () => {
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
+          <Danger>{mailError}</Danger>
         </div>
-        <div className="col-12 col-xl-10">
+        <div className="col-12 col-xl-10 mt-3">
           <div className="form-floating shadow">
             <textarea
               className="form-control border border-dark border-2"
               placeholder="Messaggio"
               id="floatingTextarea"
-              style={{ height: "150px", borderRadius: 0 }}
+              style={{ height: '150px', borderRadius: 0 }}
               value={message}
               onChange={(e) => setMessage(e.target.value)}
             />
@@ -96,12 +111,12 @@ const MailForm = () => {
               Messaggio
             </label>
           </div>
+          <Danger>{messageError}</Danger>
           <Button
             className="button float-end"
             onClick={(e) => {
               handleSubmit(e);
-            }}
-          >
+            }}>
             INVIA
           </Button>
         </div>

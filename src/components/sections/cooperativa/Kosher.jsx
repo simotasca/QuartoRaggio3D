@@ -1,10 +1,6 @@
 import Button from '../../buttons/Button';
 import { Danger, Success } from '../../Span';
-import Image from 'next/image';
-import davidImg from '../../../../public/resources/david.png';
-import okkImg from '../../../../public/resources/koshers/okk.jpg';
-import ouImg from '../../../../public/resources/koshers/ou.svg';
-import eukImg from '../../../../public/resources/koshers/euk.jpg';
+import NextImage from '../../NextImage';
 
 export default function Kosher() {
   return (
@@ -20,7 +16,7 @@ export default function Kosher() {
           </p>
         </div>
         <div className="col-lg-3 my-auto px-5 px-lg-3">
-          <Image className="img-fluid" src={davidImg} alt="..." />
+          <NextImage src={'/resources/david.png'} width={962} height={1041}/>
         </div>
         <div className="col my-auto px-5 px-lg-2">
           <h5>
@@ -35,17 +31,25 @@ export default function Kosher() {
         </h3>
         <h5>Nel mercato si annuncia come prova di qualità e purezza del prodotto e attira una clientela di nicchia in costante aumento.</h5>
       </div>
+     {/*
       <div className="row mt-5 text-end">
         <h3>
           Tra i Migliori Enti <Danger>Certificatori</Danger>
         </h3>
         <div className="d-flex justify-content-around my-4 w-100">
-          <Image className="img-fluid w-xs-25 w-xl-10 my-auto" src={okkImg} alt="..." />
-          <Image className="img-fluid w-xs-25 w-xl-10 my-auto" src={ouImg} alt="..." />
-          <Image className="img-fluid w-xs-25 w-xl-10 my-auto" src={eukImg} alt="..." />
+          <div className="w-xs-25 w-xl-10 my-auto">
+            <NextImage src={'/resources/koshers/euk.jpg'} />
+          </div>
+          <div className="w-xs-25 w-xl-10 my-auto">
+            <NextImage src={'/resources/koshers/euk.jpg'} />
+          </div>
+          <div className="w-xs-25 w-xl-10 my-auto">
+            <NextImage src={'/resources/koshers/euk.jpg'} />
+          </div>
         </div>
         <h5>Trattiamo esclusivamente con certificatori di alto livello, di fama internazionale.</h5>
       </div>
+      */}
       <div className="row mt-5">
         <div className="col my-auto">
           <h3>

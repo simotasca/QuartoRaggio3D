@@ -6,7 +6,7 @@ import { MacroContext } from '../../store/macroContext';
 import { macroPositions, macros } from '../../helpers/macros';
 import { AnimationContext } from '../../store/animationContext';
 
-const ThreeScene = () => {
+function ThreeScene() {
   const canvasOnCreated = (ctx) => {
     ctx.gl.setClearColor('white');
   };
@@ -29,6 +29,8 @@ const ThreeScene = () => {
       <Inclusione position={macroPositions[macros.inclusione]} />
     </Canvas>
   );
-};
+}
+
+ThreeScene.name === 'ThreeScene';
 
 export default ThreeScene;

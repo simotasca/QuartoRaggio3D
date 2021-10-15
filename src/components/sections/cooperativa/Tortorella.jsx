@@ -1,84 +1,84 @@
-import { Carousel, Col, Row } from 'react-bootstrap';
+import { Carousel } from 'react-bootstrap';
 import Button from '../../buttons/Button';
 import { Danger, Success } from '../../Span';
-import Image from 'next/image';
-import ofra from '../../../../public/resources/tortorella/ofra.png';
-import ofra_tappo from '../../../../public/resources/tortorella/ofra_tappo.jpg';
-import ofra_zoom from '../../../../public/resources/tortorella/ofra_zoom.png';
-import due from '../../../../public/resources/tortorella/due.jpg';
-import blend from '../../../../public/resources/tortorella/blend.png';
-import blend_zoom from '../../../../public/resources/tortorella/blend_zoom.jpg';
-import blend_tappo from '../../../../public/resources/tortorella/blend_tappo.jpg';
+import NextImage from '../../NextImage'
 
-import bibenda from '../../../../public/resources/tortorella/premi/bibenda.jpg';
-import gamberoRosso from '../../../../public/resources/tortorella/premi/gambero-rosso.jpg';
-import extraBio from '../../../../public/resources/tortorella/premi/extrabio.jpg';
-import flosOlei from '../../../../public/resources/tortorella/premi/flos-olei.png';
-import oscarGreen from '../../../../public/resources/tortorella/premi/oscar-green.jpg';
-import sirenaDoro from '../../../../public/resources/tortorella/premi/sirena-doro.jpg';
-import slowOlive from '../../../../public/resources/tortorella/premi/slow-olive.jpg';
-import slowFood from '../../../../public/resources/tortorella/premi/slow-food.jpg';
-
-const Tortorella = () => (
-  <>
-    <div className="row mt-5">
-      <h3>
-        Supportiamo il made in <Danger>Italy.</Danger>
-      </h3>
-      <h5>Il nostro interesse è rivolto specialmente alle piccole imprese sul territorio nazionale, per promuovere l`&apos;`eccellenza locale.</h5>
-      <Row className="mt-5">
-        <Col md={12} lg={5} xl={4} className="d-flex flex-column justify-content-center">
-          <Carousel indicators={false}>
-            <Carousel.Item>
-              <Image className="d-block w-100" src={ofra} alt="1 slide" />
-            </Carousel.Item>
-            <Carousel.Item>
-              <Image className="d-block w-100" src={ofra_tappo} alt="2 slide" />
-            </Carousel.Item>
-            <Carousel.Item>
-              <Image className="d-block w-100" src={ofra_zoom} alt="3 slide" />
-            </Carousel.Item>
-            <Carousel.Item>
-              <Image className="d-block w-100" src={due} alt="4 slide" />
-            </Carousel.Item>
-            <Carousel.Item>
-              <Image className="d-block w-100" src={blend} alt="5 slide" />
-            </Carousel.Item>
-            <Carousel.Item>
-              <Image className="d-block w-100" src={blend_zoom} alt="6 slide" />
-            </Carousel.Item>
-            <Carousel.Item>
-              <Image className="d-block w-100" src={blend_tappo} alt="7 slide" />
-            </Carousel.Item>
-          </Carousel>
-          <div className="w-100 h-auto">
-            <Image className="d-inline mt-2" style={{ width: 93 / 8 + '%', marginRight: '1%' }} src={bibenda} alt="no img" />
-            <Image className="d-inline mt-2" style={{ width: 93 / 8 + '%', marginRight: '1%' }} src={gamberoRosso} alt="no img" />
-            <Image className="d-inline mt-2" style={{ width: 93 / 8 + '%', marginRight: '1%' }} src={extraBio} alt="no img" />
-            <Image className="d-inline mt-2" style={{ width: 93 / 8 + '%', marginRight: '1%' }} src={flosOlei} alt="no img" />
-            <Image className="d-inline mt-2" style={{ width: 93 / 8 + '%', marginRight: '1%' }} src={oscarGreen} alt="no img" />
-            <Image className="d-inline mt-2" style={{ width: 93 / 8 + '%', marginRight: '1%' }} src={sirenaDoro} alt="no img" />
-            <Image className="d-inline mt-2" style={{ width: 93 / 8 + '%', marginRight: '1%' }} src={slowOlive} alt="no img" />
-            <Image className="d-inline mt-2" style={{ width: 93 / 8 + '%' }} src={slowFood} alt="no img" />
+export default function Tortorella() {
+  return (
+    <>
+      <div className="row mt-5">
+        <h3>
+          Supportiamo il made in <Danger>Italy.</Danger>
+        </h3>
+        <h5>Il nostro interesse è rivolto specialmente alle piccole imprese sul territorio nazionale, per promuovere l`&apos;`eccellenza locale.</h5>
+        <div className="row mt-5">
+          <div className="col-md-12 col-lg-5 col-xl-4 d-flex flex-column justify-content-center">
+            <Carousel indicators={false}>
+              <Carousel.Item>
+                <NextImage src={'/resources/tortorella/ofra.png'} width={1011} height={1011} />
+              </Carousel.Item>
+              <Carousel.Item>
+                <NextImage src={'/resources/tortorella/ofra_tappo.jpg'} width={1011} height={1011} />
+              </Carousel.Item>
+              <Carousel.Item>
+                <NextImage src={'/resources/tortorella/ofra_zoom.png'} width={1011} height={1011} />
+              </Carousel.Item>
+              <Carousel.Item>
+                <NextImage src={'/resources/tortorella/due.jpg'} width={1080} height={1080} />
+              </Carousel.Item>
+              <Carousel.Item>
+                <NextImage src={'/resources/tortorella/blend.png'} width={1011} height={1011} />
+              </Carousel.Item>
+              <Carousel.Item>
+                <NextImage src={'/resources/tortorella/blend_zoom.jpg'} width={940} height={940} />
+              </Carousel.Item>
+              <Carousel.Item>
+                <NextImage src={'/resources/tortorella/blend_tappo.jpg'} width={940} height={940} />
+              </Carousel.Item>
+            </Carousel>
+            <div className="d-flex flex align-items-center justify-content-between mx-0 mt-2">
+              <div className="d-inline-block w-100" >
+                <NextImage src={'/resources/tortorella/premi/bibenda.jpg'} width={300} height={300} />
+              </div>
+              <div className="d-inline-block w-100" >
+                <NextImage src={'/resources/tortorella/premi/gambero-rosso.jpg'} width={630} height={380} />
+              </div>
+              <div className="d-inline-block w-100" >
+                <NextImage src={'/resources/tortorella/premi/extrabio.jpg'} width={200} height={200} />
+              </div>
+              <div className="d-inline-block w-100" >
+                <NextImage src={'/resources/tortorella/premi/flos-olei.png'} width={200} height={200} />
+              </div>
+              <div className="d-inline-block w-100" >
+                <NextImage src={'/resources/tortorella/premi/oscar-green.jpg'} width={720} height={420} />
+              </div>
+              <div className="d-inline-block w-100" >
+                <NextImage src={'/resources/tortorella/premi/sirena-doro.jpg'} width={443} height={543} />
+              </div>
+              <div className="d-inline-block w-100" >
+                <NextImage src={'/resources/tortorella/premi/slow-olive.jpg'} width={600} height={605} />
+              </div>
+              <div className="d-inline-block w-100" >
+                <NextImage src={'/resources/tortorella/premi/slow-food.jpg'} width={750} height={379} />
+              </div>
+            </div>
           </div>
-        </Col>
-        <Col md={12} lg={7} xl={8} className="d-flex flex-column justify-content-center">
-          <div className="ms-xl-5 mt-3 mt-lg-0">
-            <h3>
-              <Success>Olio</Success> Tortorella
-            </h3>
-            <h5>
-              Prodotto nella terra del Cilento, è un olio biologico e kasher di alta qualità, vincitore di premi prestigiosi (tra cui 3 foglie Gambero Rosso e 5 gocce
-              Bibenda).
-            </h5>
-            <Button className="float-end" onClick={() => window.open('https://www.tenutatortorella.it/')}>
-              Vai al sito
-            </Button>
+          <div className="col col-md-12 col-lg-7 col-xl-8 d-flex flex-column justify-content-center">
+            <div className="ms-xl-5 mt-3 mt-lg-0">
+              <h3>
+                <Success>Olio</Success> Tortorella
+              </h3>
+              <h5>
+                Prodotto nella terra del Cilento, è un olio biologico e kasher di alta qualità, vincitore di premi prestigiosi (tra cui 3 foglie Gambero Rosso e 5 gocce
+                Bibenda).
+              </h5>
+              <Button className="float-end" onClick={() => window.open('https://www.tenutatortorella.it/')}>
+                Vai al sito
+              </Button>
+            </div>
           </div>
-        </Col>
-      </Row>
-    </div>
-  </>
-);
-
-export default Tortorella;
+        </div>
+      </div>
+    </>
+  );
+}

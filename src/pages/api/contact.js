@@ -13,7 +13,7 @@ export default function Kosher(req, res) {
     host: "smtp.gmail.com",
     auth: {
       user: 'mailservice.quarto.raggio@gmail.com',
-      pass: 'mailservice123'
+      pass: 'mailservice123.'
       //pass: process.env.password,
     },
     secure: true,

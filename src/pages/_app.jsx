@@ -8,7 +8,11 @@ import MainLayout from '../components/layout/MainLayout';
 import BlogLayout from '../components/layout/BlogLayout';
 import { useEffect } from 'react';
 
-function MyApp({ Component, pageProps }) {
+export function reportWebVitals(metric) {
+  console.log(metric);
+}
+
+export default function MyApp({ Component, pageProps }) {
   useEffect(() => {
     typeof document !== undefined ? require('bootstrap/dist/js/bootstrap') : null;
   }, []);
@@ -31,5 +35,3 @@ function MyApp({ Component, pageProps }) {
     );
   }
 }
-
-export default MyApp;
